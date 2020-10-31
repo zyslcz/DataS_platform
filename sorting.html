@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta description="数据结构排序算法" />
+    <meta keyword="数据结构 排序 算法 可视化 演示" />
+    <title>排序算法 - 数据结构演示</title>
+    <link rel="icon" type="image/png" href="js.ico" />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/viz.css" />
+    <link rel="stylesheet" href="css/stylesheet.css" />
+    <link rel="stylesheet" href="css/local.css" />
+    <link rel="stylesheet" href="css/sorting.css" />
+    <script src="js/jquery-2.1.3.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/d3.v3.js"></script>
+    <script src="js/viz.js"></script>
+    <script src="js/common.js"></script>
+  </head>
+
+  <body>
+    <div id="top-bar">
+      <a id="home" href="index.html">
+        数据结构
+        <span class="colour" style="color: rgb(75, 101, 186);">
+          演示平台
+        </span> </a
+      >&nbsp;&nbsp;&nbsp;
+      <span id="title">
+        <a id="title-Bubble" class="selected-viz">冒泡</a>
+        <a id="title-Selection" class="">选择</a>
+        <a id="title-Insertion" class="">插入</a>
+        <a id="title-Merge">归并</a>
+        <a id="title-Quick">快速</a>
+        <a id="title-Shell">希尔</a>
+        <a id="title-Heap" href="ex/heap.html">堆排序</a>
+        <!-- <a id="title-Radix">基数</a> -->
+      </span>
+    </div>
+    <div id="viz">
+      <svg id="viz-canvas" style="margin-top: 100px;" height="490" width="1000">
+        <g transform="translate(125, 216.2)">
+          <rect
+            height="13.799999999999999"
+            width="45"
+            style="fill: rgb(173, 216, 230);"
+          ></rect>
+          <text dy=".35em" x="22.5" y="-15">
+            3
+          </text>
+        </g>
+        <g transform="translate(175, 27.599999999999994)">
+          <rect
+            height="202.4"
+            width="45"
+            style="fill: rgb(173, 216, 230);"
+          ></rect>
+          <text dy=".35em" x="22.5" y="187.4">
+            44
+          </text>
+        </g>
+        <g transform="translate(225, 55.19999999999999)">
+          <rect
+            height="174.8"
+            width="45"
+            style="fill: rgb(173, 216, 230);"
+          ></rect>
+          <text dy=".35em" x="22.5" y="159.8">
+            38
+          </text>
+        </g>
+        <g transform="translate(275, 207)">
+          <rect height="23" width="45" style="fill: rgb(173, 216, 230);"></rect>
+          <text dy=".35em" x="22.5" y="-15">
+            5
+          </text>
+        </g>
+        <g transform="translate(325, 13.799999999999983)">
+          <rect
+            height="216.20000000000002"
+            width="45"
+            style="fill: rgb(173, 216, 230);"
+          ></rect>
+          <text dy=".35em" x="22.5" y="201.20000000000002">
+            47
+          </text>
+        </g>
+        <g transform="translate(375, 161)">
+          <rect height="69" width="45" style="fill: rgb(173, 216, 230);"></rect>
+          <text dy=".35em" x="22.5" y="54">
+            15
+          </text>
+        </g>
+        <g transform="translate(425, 64.4)">
+          <rect
+            height="165.6"
+            width="45"
+            style="fill: rgb(173, 216, 230);"
+          ></rect>
+          <text dy=".35em" x="22.5" y="150.6">
+            36
+          </text>
+        </g>
+        <g transform="translate(475, 110.39999999999999)">
+          <rect
+            height="119.60000000000001"
+            width="45"
+            style="fill: rgb(173, 216, 230);"
+          ></rect>
+          <text dy=".35em" x="22.5" y="104.60000000000001">
+            26
+          </text>
+        </g>
+        <g transform="translate(525, 105.8)">
+          <rect
+            height="124.2"
+            width="45"
+            style="fill: rgb(173, 216, 230);"
+          ></rect>
+          <text dy=".35em" x="22.5" y="109.2">
+            27
+          </text>
+        </g>
+        <g transform="translate(575, 220.8)">
+          <rect
+            height="9.200000000000001"
+            width="45"
+            style="fill: rgb(173, 216, 230);"
+          ></rect>
+          <text dy=".35em" x="22.5" y="-15">
+            2
+          </text>
+        </g>
+        <g transform="translate(625, 18.399999999999977)">
+          <rect
+            height="211.60000000000002"
+            width="45"
+            style="fill: rgb(173, 216, 230);"
+          ></rect>
+          <text dy=".35em" x="22.5" y="196.60000000000002">
+            46
+          </text>
+        </g>
+        <g transform="translate(675, 211.6)">
+          <rect
+            height="18.400000000000002"
+            width="45"
+            style="fill: rgb(173, 216, 230);"
+          ></rect>
+          <text dy=".35em" x="22.5" y="-15">
+            4
+          </text>
+        </g>
+        <g transform="translate(725, 142.6)">
+          <rect
+            height="87.4"
+            width="45"
+            style="fill: rgb(173, 216, 230);"
+          ></rect>
+          <text dy=".35em" x="22.5" y="72.4">
+            19
+          </text>
+        </g>
+        <g transform="translate(775, 0)">
+          <rect
+            height="230"
+            width="45"
+            style="fill: rgb(173, 216, 230);"
+          ></rect>
+          <text dy=".35em" x="22.5" y="215">
+            50
+          </text>
+        </g>
+        <g transform="translate(825, 9.200000000000017)">
+          <rect
+            height="220.79999999999998"
+            width="45"
+            style="fill: rgb(173, 216, 230);"
+          ></rect>
+          <text dy=".35em" x="22.5" y="205.79999999999998">
+            48
+          </text>
+        </g>
+      </svg>
+      <br />
+      <svg
+        id="viz-counting-sort-secondary-canvas"
+        height="60"
+        width="1000"
+        style="display: none;"
+      ></svg>
+      <div id="viz-radix-sort-canvas" style="display: none;">
+        <span id="radix-sort-bucket-labels-collection">
+          <span class="radix-sort-bucket-label" style="left: 17.5px;">0</span>
+          <span class="radix-sort-bucket-label" style="left: 82.5px;">1</span>
+          <span class="radix-sort-bucket-label" style="left: 147.5px;">2</span>
+          <span class="radix-sort-bucket-label" style="left: 212.5px;">3</span>
+          <span class="radix-sort-bucket-label" style="left: 277.5px;">4</span>
+          <span class="radix-sort-bucket-label" style="left: 342.5px;">5</span>
+          <span class="radix-sort-bucket-label" style="left: 407.5px;">6</span>
+          <span class="radix-sort-bucket-label" style="left: 472.5px;">7</span>
+          <span class="radix-sort-bucket-label" style="left: 537.5px;">8</span>
+          <span class="radix-sort-bucket-label" style="left: 602.5px;">9</span>
+        </span>
+      </div>
+    </div>
+    <div id="current-action" class="panel" style="display: none;">
+      <p>冒泡排序</p>
+    </div>
+    <div
+      id="actions"
+      class="panel"
+      style="height: 64px; width: 0px; background-color: rgb(214, 87, 117);"
+    >
+      <p id="create">创建</p>
+      <p id="sort">排序</p>
+    </div>
+    <div
+      id="actions-hide"
+      class="panel-hide"
+      style="
+        padding-top: 24px;
+        padding-bottom: 24px;
+        background-color: rgb(214, 87, 117);
+      "
+    >
+      <img
+        src="img/arrow_white_right.png"
+        title="show/hide actions panel"
+        class="rotateLeft"
+      />
+    </div>
+    <div id="actions-extras">
+      <div
+        class="create action-menu-pullout"
+        style="left: 193px; bottom: 92px;"
+      >
+        <div
+          id="create-random"
+          class="execAction new-menu-option coloured-menu-option"
+          onclick="createList(&#39;random&#39;)"
+          style="
+            float: left;
+            color: rgb(255, 255, 255);
+            background-color: rgb(214, 87, 117);
+          "
+        >
+          <p>随机</p>
+        </div>
+        <div
+          id="create-sorted"
+          class="execAction new-menu-option coloured-menu-option"
+          onclick="triggerSubmenu(&#39;sorted&#39;)"
+          style="
+            float: left;
+            color: rgb(255, 255, 255);
+            background-color: rgb(214, 87, 117);
+          "
+        >
+          <p>顺序</p>
+          <div
+            id="create-sorted-increasing"
+            class="execAction coloured-menu-option"
+            onclick="createList(&#39;sorted-increasing&#39;)"
+            style="
+              color: rgb(255, 255, 255);
+              display: none;
+              background-color: rgb(214, 87, 117);
+            "
+          >
+            <p>升序</p>
+          </div>
+          <div
+            id="create-sorted-decreasing"
+            class="execAction new-menu-option coloured-menu-option"
+            onclick="createList(&#39;sorted-decreasing&#39;)"
+            style="
+              color: rgb(255, 255, 255);
+              display: none;
+              background-color: rgb(214, 87, 117);
+            "
+          >
+            <p>降序</p>
+          </div>
+        </div>
+        <div
+          id="create-nearly-sorted"
+          class="execAction new-menu-option coloured-menu-option"
+          onclick="triggerSubmenu(&#39;nearly-sorted&#39;)"
+          style="
+            float: left;
+            color: rgb(255, 255, 255);
+            background-color: rgb(214, 87, 117);
+          "
+        >
+          <p>几乎顺序</p>
+          <div
+            id="create-nearly-sorted-increasing"
+            class="execAction coloured-menu-option"
+            onclick="createList(&#39;nearly-sorted-increasing&#39;)"
+            style="
+              color: rgb(255, 255, 255);
+              display: none;
+              background-color: rgb(214, 87, 117);
+            "
+          >
+            <p>升序</p>
+          </div>
+          <div
+            id="create-nearly-sorted-decreasing"
+            class="execAction new-menu-option coloured-menu-option"
+            onclick='createList("nearly-sorted-decreasing")'
+            style="
+              color: rgb(255, 255, 255);
+              display: none;
+              background-color: rgb(214, 87, 117);
+            "
+          >
+            <p>降序</p>
+          </div>
+        </div>
+        <div
+          id="create-userdefined-input"
+          class="new-menu-option"
+          style="float: left;"
+        >
+          <input
+            type="text"
+            id="userdefined-input"
+            title="Enter a list of numbers, separated by commas."
+            autocomplete="off"
+            value="3, 44, 38, 5, 47, 15, 36, 26, 27, 2, 46, 4, 19, 50, 48"
+          />
+        </div>
+        <div
+          id="create-userdefined-go"
+          class="execAction new-menu-option coloured-menu-option"
+          onclick="createList(&#39;userdefined&#39;)"
+          style="
+            float: left;
+            color: rgb(255, 255, 255);
+            background-color: rgb(214, 87, 117);
+          "
+        >
+          <p>创建序列</p>
+        </div>
+        <div id="create-err" class="err" style="float: left;"></div>
+      </div>
+      <div class="sort action-menu-pullout" style="left: 193px;">
+        <div
+          id="sort-go"
+          class="execAction new-menu-option coloured-menu-option"
+          onclick="sort()"
+          style="
+            float: left;
+            color: rgb(255, 255, 255);
+            background-color: rgb(214, 87, 117);
+          "
+        >
+          <p>开始</p>
+        </div>
+        <div id="sort-err" class="err" style="float: left;"></div>
+      </div>
+    </div>
+    <div
+      id="status"
+      class="panel"
+      style="color: rgb(0, 0, 0); background-color: rgb(254, 197, 21);"
+    >
+      <p></p>
+    </div>
+    <div
+      id="status-hide"
+      class="panel-hide"
+      style="background-color: rgb(254, 197, 21);"
+    >
+      <img src="img/arrow_black_right.png" title="show/hide status panel" />
+    </div>
+    <div
+      id="codetrace"
+      class="panel"
+      style="color: rgb(0, 0, 0); background-color: rgb(167, 212, 30);"
+    >
+      <p
+        id="code1"
+        style="
+          padding-top: 10px;
+          color: rgb(0, 0, 0);
+          background-color: rgb(167, 212, 30);
+        "
+      ></p>
+      <p
+        id="code2"
+        style="color: rgb(0, 0, 0); background-color: rgb(167, 212, 30);"
+      ></p>
+      <p
+        id="code3"
+        style="color: rgb(0, 0, 0); background-color: rgb(167, 212, 30);"
+      ></p>
+      <p
+        id="code4"
+        style="color: rgb(0, 0, 0); background-color: rgb(167, 212, 30);"
+      ></p>
+      <p
+        id="code5"
+        style="color: rgb(0, 0, 0); background-color: rgb(167, 212, 30);"
+      ></p>
+      <p
+        id="code6"
+        style="color: rgb(0, 0, 0); background-color: rgb(167, 212, 30);"
+      ></p>
+      <p
+        id="code7"
+        style="
+          padding-bottom: 10px;
+          color: rgb(0, 0, 0);
+          background-color: rgb(167, 212, 30);
+        "
+      ></p>
+    </div>
+    <div
+      id="codetrace-hide"
+      class="panel-hide"
+      style="background-color: rgb(167, 212, 30);"
+    >
+      <img
+        src="img/arrow_black_right.png"
+        title="show/hide codetrace panel"
+      />
+    </div>
+    <div id="bottom-bar">
+      <a id="trigger-about">关于</a>
+      <a id="trigger-team">团队</a>
+    </div>
+    <div id="media-controls">
+      <div id="speed-control">
+        慢
+        <div
+          id="speed-input"
+          class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"
+          aria-disabled="false"
+        >
+          <a
+            class="ui-slider-handle ui-state-default ui-corner-all"
+            href="sorting.html"
+            style="left: 68.421052631579%;"
+          ></a>
+        </div>
+        快
+      </div>
+      <span
+        id="go-to-beginning"
+        class="media-control-button"
+        title="跳到开始"
+        onclick="goToBeginning()"
+        ><img src="img/goToBeginning.png" alt="go to beginning"
+      /></span>
+      <span
+        id="previous"
+        class="media-control-button"
+        title="后退一步"
+        onclick="stepBackward()"
+        ><img src="img/prevFrame.png" alt="previous frame"
+      /></span>
+      <span
+        id="pause"
+        class="media-control-button"
+        title="暂停"
+        onclick="pause()"
+        ><img src="img/pause.png" alt="pause"
+      /></span>
+      <span
+        id="play"
+        class="media-control-button"
+        title="开始"
+        onclick="play()"
+        style="display: none;"
+        ><img src="img/play.png" alt="play"
+      /></span>
+      <span
+        id="next"
+        class="media-control-button"
+        title="前进一步"
+        onclick="stepForward()"
+        ><img src="img/nextFrame.png" alt="next frame"
+      /></span>
+      <span
+        id="go-to-end"
+        class="media-control-button"
+        title="跳到结尾"
+        onclick="goToEnd()"
+        ><img src="img/goToEnd.png" alt="go to end"
+      /></span>
+      <div
+        id="progress-bar"
+        class="media-control-button ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"
+        aria-disabled="false"
+      >
+        <div
+          class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min"
+          style="width: 0%; background-color: rgb(75, 101, 186);"
+        ></div>
+        <a
+          class="ui-slider-handle ui-state-default ui-corner-all"
+          href="index.html"
+          style="left: 0%;"
+        ></a>
+      </div>
+    </div>
+    <div id="dark-overlay"></div>
+    <div id="about" class="overlays">
+      <h4 style="background-color: rgb(75, 101, 186);">
+        About Data Structure
+      </h4>
+      <img class="close-overlay" src="img/cross_white.png" />
+      <div class="content">
+        <p>
+          在计算机科学或信息科学中，数据结构（英语：data
+          structure）是计算机中存储、组织数据的方式。
+        </p>
+        <p>
+          数据结构意味着接口或封装：一个数据结构可被视为两个函数之间的接口，或者是由数据类型联合组成的存储内容的访问方法封装。
+        </p>
+        <p>
+          大多数数据结构都由数列、记录、可辨识联合、引用等基本类型构成。举例而言，可为空的引用（nullable
+          reference）是引用与可辨识联合的结合体，而最简单的链式结构链表则是由记录与可空引用构成。
+        </p>
+        <p>
+          数据结构可透过程序语言所提供的数据类型、引用及其他操作加以实现。一个设计良好的数据结构，应该在尽可能使用较少的时间与空间资源的前提下，支持各种程序运行。
+        </p>
+        <p>
+          不同种类的数据结构适合不同种类的应用，部分数据结构甚至是为了解决特定问题而设计出来的。例如B树即为加快树状结构访问速度而设计的数据结构，常被应用在数据库和文件系统上。
+        </p>
+        <p>
+          正确的数据结构选择可以提高算法的效率（请参考算法效率）。在计算机程序设计的过程里，选择适当的数据结构是一项重要工作。许多大型系统的编写经验显示，程序设计的困难程度与最终成果的质量与表现，取决于是否选择了最适合的数据结构。
+        </p>
+        <p>
+          系统架构的关键因素是数据结构而非算法的见解，导致了多种形式化的设计方法与编程语言的出现。绝大多数的语言都带有某种程度上的模块化思想，透过将数据结构的具体实现封装隐藏于用户接口之后的方法，来让不同的应用程序能够安全地重用这些数据结构。C++、Java、Python等面向对象的编程语言可使用类来达到这个目的。
+        </p>
+        <p>
+          因为数据结构概念的普及，现代编程语言及其API中都包含了多种默认的数据结构，例如
+          C++ 标准模板库中的容器、Java集合框架以及微软的.NET Framework。
+        </p>
+      </div>
+    </div>
+    <div id="team" class="overlays">
+      <h4 style="background-color: rgb(75, 101, 186);">
+        The team
+      </h4>
+    </div>
+    <script src="js/sorting.js"></script>
+  </body>
+</html>

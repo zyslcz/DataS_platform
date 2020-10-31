@@ -1,0 +1,43 @@
+.expression {
+  width: 100vw;
+  padding: 8px;
+  padding-left: 60px;
+  background-color: black;
+  color: white;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.expression * {
+  position: relative;
+}
+
+.expression label {
+  height: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.expression input {
+  margin: 0 15px;
+  height: 1.5rem;
+  width: 300px;
+  padding: 0 8px;
+}
+
+.expression button {
+  height: 1.5rem;
+  line-height: 1.5rem;
+  width: 70px;
+  background: rgb(214, 87, 117);
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  color: white;
+}
+
+.exp_display {
+  left: 5vw;
+}
+

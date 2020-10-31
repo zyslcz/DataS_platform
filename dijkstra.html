@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta description="最小生成树的数据结构演示" />
+    <meta keyword="数据结构 Dijkstra算法 可视化 演示" />
+    <title>Dijkstra算法 - 数据结构演示</title>
+    <link rel="icon" type="image/png" href="img/favicon.ico" />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/viz.css" />
+    <link rel="stylesheet" href="css/stylesheet.css" />
+    <link rel="stylesheet" href="css/local.css" />
+    <link rel="stylesheet" href="css/visual.css" />
+    <link rel="stylesheet" href="css/drawgraph.css" />
+    <link rel="stylesheet" href="css/mst.css" />
+
+    <script src="js/jquery-2.1.3.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/d3.v3.js"></script>
+    <script src="js/viz.js"></script>
+    <script src="js/common.js"></script>
+  </head>
+
+  <body>
+    <div id="top-bar">
+      <a id="home" href="index.html"
+        >数据结构&nbsp;<span class="colour" style="color: rgb(167, 212, 30);"
+          >演示平台</span
+        ></a
+      >
+      &nbsp;&nbsp;&nbsp;
+      <span id="title">
+        <a class="selected-viz">Dijkstra算法</a>
+      </span>
+    </div>
+    <div id="viz"></div>
+    <div id="current-action" class="panel" style="display: none;"></div>
+    <div
+      style="
+        position: absolute;
+        bottom: 140px;
+        left: 43px;
+        opacity: 0;
+        transition: all 0.5s;
+      "
+      id="v-from-to"
+    >
+      <div id="search-input" class="new-menu-option">
+        <input
+          type="text"
+          id="v-from"
+          title="Enter an integer"
+          autocomplete="off"
+          placeholder="起点"
+        />
+        <input
+          type="text"
+          id="v-to"
+          title="Enter an integer"
+          autocomplete="off"
+          placeholder="终点"
+        />
+      </div>
+      <div
+        id="search-go"
+        class="execAction coloured-menu-option"
+        onclick="setVertex()"
+        style="
+          /* float: left; */
+          color: rgb(255, 255, 255);
+          background-color: rgb(75, 101, 186);
+        "
+      >
+        <p>确认</p>
+      </div>
+    </div>
+    <div
+      id="actions"
+      class="panel"
+      style="height: 145px; width: 0px; background-color: rgb(255, 138, 39);"
+    >
+      <p id="draw" class="execAction" onclick="dijkstra()">Dijkstra算法</p>
+      <!-- <p id="kruskals" class="execAction" onclick="kruskals()">Kruskal算法</p> -->
+    </div>
+    <div
+      id="actions-hide"
+      class="panel-hide"
+      style="
+        padding-top: 64px;
+        padding-bottom: 65px;
+        background-color: rgb(255, 138, 39);
+      "
+    >
+      <img
+        src="img/arrow_white_right.png"
+        title="show/hide actions panel"
+        class="rotateLeft"
+      />
+    </div>
+    <div id="actions-extras">
+      <div class="draw action-menu-pullout" style="left: 193px;">
+        <div id="draw-err" class="err" style="float: left;"></div>
+      </div>
+      <div class="samples action-menu-pullout" style="left: 193px;">
+        <div
+          id="sample1"
+          class="execAction new-menu-option coloured-menu-option"
+          onclick="sample(MST_EXAMPLE_CP4P10)"
+          style="
+            float: left;
+            color: rgb(255, 255, 255);
+            background-color: rgb(255, 138, 39);
+          "
+        >
+          <p>示例 1</p>
+        </div>
+        <div
+          id="sample2"
+          class="execAction new-menu-option coloured-menu-option"
+          onclick="sample(MST_EXAMPLE_CP4P14)"
+          style="
+            float: left;
+            color: rgb(255, 255, 255);
+            background-color: rgb(255, 138, 39);
+          "
+        >
+          <p>示例 2</p>
+        </div>
+        <div
+          id="sample3"
+          class="execAction new-menu-option coloured-menu-option"
+          onclick="sample(MST_EXAMPLE_K5)"
+          style="
+            float: left;
+            color: rgb(255, 255, 255);
+            background-color: rgb(255, 138, 39);
+          "
+        >
+          <p>五点完全图</p>
+        </div>
+        <div
+          id="sample4"
+          class="execAction new-menu-option coloured-menu-option"
+          onclick="sample(MST_EXAMPLE_RAIL)"
+          style="
+            float: left;
+            color: rgb(255, 255, 255);
+            background-color: rgb(255, 138, 39);
+          "
+        >
+          <p>轨道</p>
+        </div>
+        <div
+          id="sample5"
+          class="execAction new-menu-option coloured-menu-option"
+          onclick="sample(MST_EXAMPLE_TESSELLATION)"
+          style="
+            float: left;
+            color: rgb(255, 255, 255);
+            background-color: rgb(255, 138, 39);
+          "
+        >
+          <p>细分曲面图</p>
+        </div>
+        <div id="samples-err" class="err" style="float: left;"></div>
+      </div>
+      <div class="kruskals action-menu-pullout" style="left: 193px;">
+        <div id="kruskals-err" class="err" style="float: left;"></div>
+      </div>
+      <div class="prims action-menu-pullout" style="left: 193px;">
+        <div id="prims-input" class="new-menu-option" style="float: left;">
+          <input type="text" id="prim-v" autocomplete="off" value="0" />
+        </div>
+        <div
+          id="prims-go"
+          class="execAction coloured-menu-option"
+          onclick="prims()"
+          style="
+            float: left;
+            color: rgb(255, 255, 255);
+            background-color: rgb(255, 138, 39);
+          "
+        >
+          <p>开始</p>
+        </div>
+        <div id="prims-err" class="err" style="float: left;"></div>
+      </div>
+    </div>
+    <div id="status" class="panel" style="background-color: rgb(75, 101, 186);">
+      <p></p>
+    </div>
+    <div
+      id="status-hide"
+      class="panel-hide"
+      style="background-color: rgb(75, 101, 186);"
+    >
+      <img src="img/arrow_white_right.png" title="show/hide status panel" />
+    </div>
+    <div
+      id="codetrace"
+      class="panel"
+      style="color: rgb(0, 0, 0); background-color: rgb(254, 197, 21);"
+    >
+      <p id="code1" style="padding-top: 10px;"></p>
+      <p id="code2"></p>
+      <p id="code3"></p>
+      <p id="code4"></p>
+      <p id="code5"></p>
+      <p id="code6"></p>
+      <p id="code7" style="padding-bottom: 10px;"></p>
+    </div>
+    <div
+      id="codetrace-hide"
+      class="panel-hide"
+      style="background-color: rgb(254, 197, 21);"
+    >
+      <img src="img/arrow_black_right.png" title="show/hide codetrace panel" />
+    </div>
+    <div id="left-bar"></div>
+    <div id="right-bar"></div>
+    <div id="bottom-bar">
+      <a id="trigger-about">关于</a>
+      <a id="trigger-team">团队</a>
+      <!-- <a id="trigger-terms">Terms of use</a>-->
+    </div>
+    <div id="media-controls">
+      <div id="speed-control">
+        慢
+        <div
+          id="speed-input"
+          class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"
+          aria-disabled="false"
+        >
+          <a
+            class="ui-slider-handle ui-state-default ui-corner-all"
+            href="mst.html#"
+            style="left: 68.421052631579%;"
+          ></a>
+        </div>
+        快
+      </div>
+      <span
+        id="go-to-beginning"
+        class="media-control-button"
+        title="跳到开始"
+        onclick="goToBeginning()"
+        ><img src="img/goToBeginning.png" alt="go to beginning"
+      /></span>
+      <span
+        id="previous"
+        class="media-control-button"
+        title="后退一步"
+        onclick="stepBackward()"
+        ><img src="img/prevFrame.png" alt="previous frame"
+      /></span>
+      <span
+        id="pause"
+        class="media-control-button"
+        title="暂停"
+        onclick="pause()"
+        ><img src="img/pause.png" alt="pause"
+      /></span>
+      <span
+        id="play"
+        class="media-control-button"
+        title="开始"
+        onclick="play()"
+        style="display: none;"
+        ><img src="img/play.png" alt="play"
+      /></span>
+      <span
+        id="next"
+        class="media-control-button"
+        title="前进一步"
+        onclick="stepForward()"
+        ><img src="img/nextFrame.png" alt="next frame"
+      /></span>
+      <span
+        id="go-to-end"
+        class="media-control-button"
+        title="跳到结尾"
+        onclick="goToEnd()"
+        ><img src="img/goToEnd.png" alt="go to end"
+      /></span>
+      <div
+        id="progress-bar"
+        class="media-control-button ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"
+        aria-disabled="false"
+      >
+        <div
+          class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min"
+          style="width: 0%; background-color: rgb(167, 212, 30);"
+        ></div>
+        <a
+          class="ui-slider-handle ui-state-default ui-corner-all"
+          href="mst.html"
+          style="left: 0%;"
+        ></a>
+      </div>
+    </div>
+    <div id="dark-overlay"></div>
+    <!-- <div id="drawgraph" class="overlays"></div> -->
+    <div id="about" class="overlays">
+      <h4 style="background-color: rgb(167, 212, 30);">关于</h4>
+      <img class="close-overlay" src="img/cross_white.png" />
+      <div class="content"></div>
+    </div>
+    <div id="team" class="overlays">
+      <h4 style="background-color: rgb(167, 212, 30);">团队</h4>
+      <img class="close-overlay" src="img/cross_white.png" />
+      <div class="content"></div>
+    </div>
+    <script src="js/constant.js"></script>
+    <script src="js/properties.js"></script>
+    <script src="js/helperObjects.js"></script>
+    <script src="js/misc.js"></script>
+    <script src="js/Widget.js"></script>
+    <script src="js/GraphWidget.js"></script>
+    <script src="js/GraphVertexWidget.js"></script>
+    <script src="js/GraphEdgeWidget.js"></script>
+    <!-- <script src="js/drawgraph.js"></script> -->
+    <script src="js/visual_final.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/pages/dijkstra.js"></script>
+  </body>
+</html>

@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta description="数据结构排序算法">
+    <meta keyword="数据结构 排序 算法 可视化 演示">
+    <title>树的遍历 - 数据结构演示</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/stylesheet.css">
+    <script src="js/jquery-2.1.3.min.js"></script>
+    <style>
+        body {
+            height: 100%;
+        }
+        #left-bar {
+            position: absolute;
+            float: left;
+            width: 40px;
+            top:0;
+            bottom: 0;
+            background: #000000;
+            z-index: -1;
+        }
+        #right-bar {
+            position: absolute;
+            float: right;
+            width: 40px;
+            top:0;
+            bottom: 0;
+            right:0;
+            background: #000000;
+            z-index: -1;
+        }
+        #container{
+            /*margin: 0 auto;*/
+            margin-top: 10px;
+            width: 1024px;
+            height: 600px;;
+            /*border: 1px solid #bbbbbb;*/
+        }
+
+        #container > div{
+            float: left;
+            position: absolute;
+        }
+
+        button, input {
+            position: absolute;
+            width: 150px;
+            height: 40px;
+            font-size: 16px;;
+        }
+
+        .circle {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            line-height: 25px;
+            border: 3px solid #000000;
+            text-align: center;
+            font-size: 18px;
+            z-index: 99;
+
+            -webkit-transition: all 300ms ease-in-out;
+            -moz-transition: all 300ms ease-in-out;
+            -o-transition: all 300ms ease-in-out;
+            transition: all 300ms ease-in-out;
+        }
+
+        .line {
+            width: 77px;
+            height: 3px;
+            background: #000000;
+            transform:rotate(-45deg);
+            -ms-transform:rotate(-45deg); 	/* IE 9 */
+            -moz-transform:rotate(-45deg); 	/* Firefox */
+            -webkit-transform:rotate(-45deg); /* Safari 和 Chrome */
+            -o-transform:rotate(-45deg); 	/* Opera */
+            z-index: 98;
+
+            -webkit-transition: all 300ms ease-in-out;
+            -moz-transition: all 300ms ease-in-out;
+            -o-transition: all 300ms ease-in-out;
+            transition: all 300ms ease-in-out;
+        }
+
+
+        .line-r {
+            transform:rotate(45deg);
+            -ms-transform:rotate(45deg); 	/* IE 9 */
+            -moz-transform:rotate(45deg); 	/* Firefox */
+            -webkit-transform:rotate(45deg); /* Safari 和 Chrome */
+            -o-transform:rotate(45deg); 	/* Opera */
+        }
+
+        #c-a {
+            left: 400px;
+            top:100px;
+        }
+
+        #c-b {
+            left: 325px;
+            top:175px;
+        }
+
+        #c-c {
+            left: 475px;
+            top:175px;
+        }
+
+        #c-d {
+            left: 250px;
+            top:250px;
+        }
+
+        #c-e {
+            left: 400px;
+            top: 250px;
+        }
+
+        #c-f {
+            left: 550px;
+            top: 250px;
+        }
+
+        #c-g {
+            left: 175px;
+            top: 325px;
+        }
+
+        #c-h {
+            left: 325px;
+            top: 325px;
+        }
+
+        #c-i {
+            left: 475px;
+            top: 325px;
+        }
+
+        #c-j {
+            left: 625px;
+            top: 325px;
+        }
+
+
+
+
+        #l-ab {
+            left: 339px;
+            top: 150px;
+        }
+
+        #l-ac {
+            left: 417px;
+            top: 150px;
+        }
+
+        #l-bd {
+            left: 264px;
+            top: 225px;
+        }
+
+        #l-dg {
+            left: 189px;
+            top: 300px;
+        }
+
+        #l-eh {
+            left: 339px;
+            top: 300px;
+        }
+
+        #l-fi {
+            left: 489px;
+            top: 300px;
+        }
+
+        #l-ce {
+            left: 414px;
+            top: 225px;
+        }
+
+        #l-cf {
+            left: 492px;
+            top: 225px;
+        }
+
+        #l-fj {
+            left: 567px;
+            top: 300px;
+        }
+
+        #info2 {
+            right: 0;
+            bottom: 250px;
+            width: 40px;
+            height: 50px;
+            background: rgb(214, 87, 117);
+        }
+
+        #info {
+            bottom: 250px;
+            right: 45px;
+            height: 50px;
+            width: 400px;
+            color: white;
+            background: rgb(214, 87, 117);
+        }
+
+        #info > p{
+            padding-top: 10px;
+            padding-left: 10px;
+        }
+
+        #code2 {
+            bottom: 40px;
+            right: 0;
+            width: 40px;
+            height: 200px;
+            background: rgb(217, 81, 60);
+        }
+
+        #code {
+            bottom: 40px;
+            right: 45px;
+            width: 400px;
+            background: rgb(217, 81, 60);
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        #code>p{
+            padding-left: 10px;
+            line-height: 25px;
+            font-size: 13px;
+        }
+
+        #start {
+            bottom: 200px;
+            height: 40px;
+            width: 70px;
+            left: 45px;
+            background: rgb(214, 87, 117);
+            text-align: center;
+            cursor: pointer;
+            z-index: 99;
+        }
+
+
+        #start:hover {
+            background: rgb(209, 67, 100);
+        }
+
+        #start-p{
+            line-height: 40px;
+            color: white;
+            -webkit-user-select:none;
+            -moz-user-select:none;
+            -ms-user-select:none;
+            user-select:none;
+        }
+
+        #start2 {
+            bottom: 200px;
+            height: 40px;
+            width: 40px;
+            background: rgb(214, 87, 117);
+        }
+
+        #start3 {
+            bottom: 155px;
+            height: 40px;
+            width: 40px;
+            background: rgb(214, 87, 117);
+        }
+
+        #result {
+            left: 200px;
+            bottom: 200px;
+        }
+
+        .circle-r{
+            float: left;
+            margin-left: 10px;
+            margin-top: 5px;
+        }
+
+
+
+        .speed {
+            bottom: 155px;
+            height: 40px;
+            width: 70px;
+            left: 45px;
+            background: rgb(214, 87, 117);
+            text-align: center;
+            cursor: pointer;
+            z-index: 99;
+        }
+
+
+        .speed:hover {
+            background: rgb(209, 67, 100);
+        }
+
+        .speed>p{
+            line-height: 40px;
+            color: white;
+            -webkit-user-select:none;
+            -moz-user-select:none;
+            -ms-user-select:none;
+            user-select:none;
+        }
+
+        #speed-down {
+            width: 50px;
+        }
+
+        #speed-default {
+            left: 96px;
+        }
+
+        #speed-up {
+            width: 50px;
+            left: 167px;
+        }
+
+        span.zys{
+            font-size: 2vw;
+        }
+    </style>
+
+</head>
+
+<body>
+<div id="left-bar"></div>
+<div id="right-bar"></div>
+    <div id="top-bar">
+        <a id="home" href="index.html">
+            数据结构
+            <span class="colour" style="color: rgb(75, 101, 186);">
+                演示平台
+            </span>
+        </a>&nbsp;&nbsp;&nbsp;
+        <span id="title">
+            <a class="" href="./tree_travel.html">前序遍历</a>
+            <a class="" href="./tree_travel_m.html">中序遍历</a>
+            <a class="" href="./tree_travel_b.html">后序遍历</a>
+            <a class="" href="./tree_travel_l.html">层次遍历</a>
+            <a class="" href="./tree_travel_nr.html">前序遍历（非递归）</a>
+            <a class="selected-viz" href="./tree_travel_m_nr.html">中序遍历（非递归）</a>
+            <a class="" href="./tree_travel_b_nr.html">后序遍历（非递归）</a>
+        </span>
+    </div>
+    <div id="container">
+        <div id="c-a" class="circle">A</div>
+        <div id="c-b" class="circle">B</div>
+        <div id="c-c" class="circle">C</div>
+        <div id="c-d" class="circle">D</div>
+        <div id="c-e" class="circle">E</div>
+        <div id="c-f" class="circle">F</div>
+        <div id="c-g" class="circle">G</div>
+        <div id="c-h" class="circle">H</div>
+        <div id="c-i" class="circle">I</div>
+        <div id="c-j" class="circle">J</div>
+
+
+        <div id="l-ab" class="line"></div>
+        <div id="l-ac" class="line line-r"></div>
+        <div id="l-cf" class="line line-r"></div>
+        <div id="l-fj" class="line line-r"></div>
+        <div id="l-bd" class="line"></div>
+        <div id="l-ce" class="line"></div>
+        <div id="l-dg" class="line"></div>
+        <div id="l-eh" class="line"></div>
+        <div id="l-fi" class="line"></div>
+
+        <div id="result">
+            <span class="zys">遍历结果:</span>
+            <div id="result-container">
+                <div class="circle circle-r" style="opacity: 0"></div>
+            </div>
+        </div>
+
+        <div id="info2"></div>
+        <div id="code2"></div>
+
+        <div id="info">
+            <p id="info-p"></p>
+        </div>
+
+        <div id="code">
+            <p id="code-1">while(this != null || !stack.isEmpty()){</p>
+            <p id="code-2">&nbsp;&nbsp;&nbsp;&nbsp;while (this != null){</p>
+            <p id="code-3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stack.push(this);</p>
+            <p id="code-4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this = this.lchild;}</p>
+            <p id="code-5">&nbsp;&nbsp;&nbsp;&nbsp;if (!stack.isEmpty()){</p>
+            <p id="code-6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this = stack.pop();</p>
+            <p id="code-7">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(this.data+" ");</p>
+            <p id="code-8">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this = this.rchild}}</p>
+
+        </div>
+
+        <div id="start" class="click"><p id="start-p">开始遍历</p></div>
+
+        <div id="start2"></div>
+        <div id="start3"></div>
+
+        <div id="speed-down" class="speed"><p>减速</p></div>
+        <div id="speed-default" class="speed"><p>恢复默认</p></div>
+        <div id="speed-up" class="speed"><p>加速</p></div>
+
+
+    </div>
+</body>
+
+
+
+<script>
+    // INIT, ING, PAUSE, STOP
+
+    var TOTAL_STEP = 80;
+    var CURRENT_STEP = 0;
+    var DEFAULT_SPEED = 800;
+    /**
+     * DO NOT CHANGE
+     * @type {string}
+     */
+    var CURRENT_STATUS = "INIT";
+
+    function init() {
+        var i = 0;
+        var circles = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
+        var lines = ["AB", "BD", "DG", "AC", "CE", "EH", "CF", "FI", "FJ"];
+        for(i = 0; i < circles.length; i ++) {
+            deLightCircle(circles[i]);
+        }
+        for(i = 0; i < lines.length; i ++) {
+            deLightLine(lines[i]);
+        }
+        $("#result-container").html("<div class=\"circle circle-r\" style=\"opacity: 0\"></div>");
+        CURRENT_STEP = 0;
+    }
+
+    function stop() {
+        setText("遍历结束");
+        $(".circle-r").css("border-color", "rgb(255, 138, 39)")
+                .css("background-color", "rgb(255, 138, 39)")
+                .css("color", "#FFFFFF");
+        window.setTimeout(function(){
+            $(".circle-r").css("border-color", "#000000")
+                    .css("background-color", "rgba(0,0,0,0)")
+                    .css("color", "#000000");
+        }, 300);
+    }
+
+    function step(num) {
+        switch (num) {
+            case 1:
+                    lightCircle("A");
+                    setText("访问根节点 A, 非空");
+                    setCode(1);
+                break;
+            case 2:
+                    setText("A节点入栈");
+                    setCode(3);
+                break;
+            case 3:
+                    setText("取A节点左子节点");
+                    lightLine("AB");
+                    setCode(4);
+                break;
+            case 4:
+                    lightCircle("B");
+                    setText("访问节点 B, 非空");
+                    setCode(2);
+                break;
+
+            case 5:
+                    setText("B节点入栈");
+                    setCode(3);
+                break;
+            case 6:
+                setText("取B节点左子节点");
+                lightLine("BD");
+                setCode(4);
+                break;
+            case 7:
+                lightCircle("D");
+                setText("访问节点 D, 非空");
+                setCode(2);
+                break;
+
+            case 8:
+                setText("D节点入栈");
+                setCode(3);
+                break;
+            case 9:
+                setText("取D节点左子节点");
+                lightLine("DG");
+                setCode(4);
+                break;
+            case 10:
+                lightCircle("G");
+                setText("访问节点 G, 非空");
+                setCode(2);
+                break;
+
+            case 11:
+                    setText("G节点入栈");
+                    setCode(3);
+                break;
+            case 12:
+                setText("取G节点左子节点");
+                setCode(4);
+                break;
+            case 13:
+                setText("G节点左子节点为空");
+                setCode(2);
+                break;
+            case 14:
+                setText("栈非空");
+                setCode(5);
+                break;
+            case 15:
+                doneCircle("G")
+                setText("取出栈顶元素，为G节点");
+                setCode(6);
+                break;
+            case 16:
+                setText("遍历输出 G 节点");
+                addResult("G");
+                setCode(7);
+                break;
+            case 17:
+                setText("取G节点右子节点");
+                setCode(8);
+                break;
+            case 18:
+                setText("G节点右子节点为空");
+                setCode(2);
+                break;
+            case 19:
+                setText("栈非空");
+                setCode(5);
+                break;
+            case 20:
+                doneCircle("D")
+                setText("取出栈顶元素，为D节点");
+                setCode(6);
+                break;
+            case 21:
+                setText("遍历输出 D 节点");
+                addResult("G");
+                setCode(7);
+                break;
+            case 22:
+                setText("取D节点右子节点");
+                setCode(8);
+                break;
+            case 23:
+                setText("D节点右子节点为空");
+                setCode(2);
+                break;
+            case 24:
+                setText("栈非空");
+                setCode(5);
+                break;
+            case 25:
+                doneCircle("B")
+                setText("取出栈顶元素，为B节点");
+                setCode(6);
+                break;
+            case 26:
+                setText("遍历输出 B 节点");
+                addResult("B");
+                setCode(7);
+                break;
+            case 27:
+                setText("取B节点右子节点");
+                setCode(8);
+                break;
+            case 28:
+                setText("B节点右子节点为空");
+                setCode(2);
+                break;
+            case 29:
+                setText("栈非空");
+                setCode(5);
+                break;
+            case 30:
+                doneCircle("A")
+                setText("取出栈顶元素，为A节点");
+                setCode(6);
+                break;
+            case 31:
+                setText("遍历输出 A 节点");
+                addResult("A");
+                setCode(7);
+                break;
+            case 32:
+                setText("取A节点右子节点");
+                lightLine("AC");
+                setCode(8);
+                break;
+            case 33:
+                lightCircle("C")
+                setText("A节点右子节点为C，非空");
+                setCode(1);
+                break;
+            case 34:
+                    setText("C节点入栈");
+                    setCode(3);
+                break;
+            case 35:
+                setText("取C节点左子节点");
+                lightLine("CE");
+                setCode(4);
+                break;
+            case 36:
+                lightCircle("E");
+                setText("访问节点 E, 非空");
+                setCode(2);
+                break;
+            case 37:
+                    setText("E节点入栈");
+                    setCode(3);
+                break;
+            case 38:
+                setText("取E节点左子节点");
+                lightLine("EH");
+                setCode(4);
+                break;
+            case 39:
+                lightCircle("H");
+                setText("访问节点 H, 非空");
+                setCode(2);
+                break;
+            case 40:
+                setText("H节点入栈");
+                setCode(3);
+                break;
+            case 41:
+                setText("取H节点左子节点");
+                setCode(4);
+                break;
+            case 42:
+                setText("H节点左子节点为空");
+                setCode(2);
+                break;
+            case 43:
+                setText("栈非空");
+                setCode(5);
+                break;
+            case 44:
+                doneCircle("H");
+                setText("取出栈顶元素，为H节点");
+                setCode(6);
+                break;
+            case 45:
+                setText("遍历输出 H 节点");
+                addResult("H");
+                setCode(7);
+                break;
+            case 46:
+                setText("取H节点右子节点");
+                setCode(8);
+                break;
+            case 47:
+                setText("H节点右子节点为空");
+                setCode(2);
+                break;
+            case 48:
+                setText("栈非空");
+                setCode(5);
+                break;
+            case 49:
+                doneCircle("E");
+                setText("取出栈顶元素，为E节点");
+                setCode(6);
+                break;
+            case 50:
+                setText("遍历输出 E 节点");
+                addResult("E");
+                setCode(7);
+                break;
+            case 51:
+                setText("取E节点右子节点");
+                setCode(8);
+                break;
+            case 52:
+                setText("E节点右子节点为空");
+                setCode(2);
+                break;
+            case 53:
+                setText("栈非空");
+                setCode(5);
+                break;
+            case 54:
+                doneCircle("C");
+                setText("取出栈顶元素，为C节点");
+                setCode(6);
+                break;
+            case 55:
+                setText("遍历输出 C 节点");
+                addResult("C");
+                setCode(7);
+                break;
+            case 56:
+                setText("取C节点右子节点");
+                lightLine("CF");
+                setCode(8);
+                break;
+            case 57:
+                lightCircle("F")
+                setText("C节点右子节点为F，非空");
+                setCode(1);
+                break;
+            case 58:
+                    setText("F节点入栈");
+                    setCode(3);
+                break;
+            case 59:
+                setText("取F节点左子节点");
+                lightLine("FI");
+                setCode(4);
+                break;
+            case 60:
+                lightCircle("I");
+                setText("访问节点 I, 非空");
+                setCode(2);
+                break;
+            case 61:
+                    setText("I节点入栈");
+                    setCode(3);
+                break;
+            case 62:
+                setText("取I节点左子节点");
+                setCode(4);
+                break;
+            case 63:
+                setText("I节点左子节点为空");
+                setCode(2);
+                break;
+            case 64:
+                setText("栈非空");
+                setCode(5);
+                break;
+            case 65:
+                doneCircle("I")
+                setText("取出栈顶元素，为I节点");
+                setCode(6);
+                break;
+            case 66:
+                setText("遍历输出 I 节点");
+                addResult("G");
+                setCode(7);
+                break;
+            case 67:
+                setText("取I节点右子节点");
+                setCode(8);
+                break;
+            case 68:
+                setText("I节点右子节点为空");
+                setCode(2);
+                break;
+            case 69:
+                setText("栈非空");
+                setCode(5);
+                break;
+            case 70:
+                doneCircle("F");
+                setText("取出栈顶元素，为F节点");
+                setCode(6);
+                break;
+            case 71:
+                setText("遍历输出 F 节点");
+                addResult("G");
+                setCode(7);
+                break;
+            case 72:
+                setText("取F节点右子节点");
+                lightLine("FJ");
+                setCode(8);
+                break;
+            case 73:
+                lightCircle("J");
+                setText("F节点右子节点为J，非空");
+                setCode(1);
+                break;
+
+            case 74:
+                    setText("J节点入栈");
+                    setCode(3);
+                break;
+            case 75:
+                setText("J节点左子节点为空");
+                setCode(4);
+                break;
+            case 76:
+                setText("栈非空");
+                setCode(5);
+                break;
+            case 77:
+                doneCircle("J");
+                setText("取出栈顶元素，为J节点");
+                setCode(6);
+                break;
+            case 78:
+                setText("遍历输出 J 节点");
+                addResult("J");
+                setCode(7);
+                break;
+            case 79:
+                setText("取J节点右子节点");
+                setCode(8);
+                break;
+            case 80:
+                setText("J节点右子节点为空且栈为空，遍历结束");
+                setCode(1);
+                break;
+        }
+    }
+    $(document).ready(function() {
+//        $("#start").click();
+    });
+
+
+    $("#speed-up").click(function () {
+        if(DEFAULT_SPEED <= 300) {
+            alert("已达到最快速度");
+        } else {
+            DEFAULT_SPEED -= 100;
+        }
+    });
+
+
+    $("#speed-down").click(function () {
+        DEFAULT_SPEED += 100;
+    });
+
+    $("#speed-default").click(function () {
+        DEFAULT_SPEED = 800;
+    });
+
+    $(".speed, .click").mousedown(function () {
+        $(this).css("background-color", "rgb(201, 49, 85)");
+    }).mouseup(function () {
+        $(this).css("background-color", "rgb(214, 87, 117)");
+    });
+
+    $("#code").mouseover(function () {
+        $(this).css("color", "#FFFFFF");
+    }).mouseleave(function () {
+        $(this).css("color", "#000000");
+    });
+
+    $("#start").click(function() {
+        switch (CURRENT_STATUS) {
+            case "INIT":
+                //开始遍历
+                _setBtn("暂停");
+                CURRENT_STATUS = "ING";
+                resume();
+                break;
+            case "ING":
+                //暂停遍历
+                _setBtn("继续");
+                CURRENT_STATUS = "PAUSE";
+                break;
+            case "PAUSE":
+                //继续遍历
+                _setBtn("暂停");
+                CURRENT_STATUS = "ING";
+                resume();
+                break;
+            case "STOP":
+                //重新开始遍历
+                _setBtn("暂停");
+                CURRENT_STATUS = "ING";
+                init();
+                resume();
+                break;
+        }
+    });
+
+
+    function resume() {
+        if(CURRENT_STATUS == "ING" && CURRENT_STEP < TOTAL_STEP) {
+            CURRENT_STEP += 1;
+            step(CURRENT_STEP);
+//            alert(CURRENT_STEP);
+            if(CURRENT_STEP == TOTAL_STEP) {
+                // 结束了
+                _setBtn("重新开始");
+                CURRENT_STATUS = "STOP";
+                window.setTimeout(stop, 300);
+            } else {
+                window.setTimeout(resume, DEFAULT_SPEED);
+            }
+        }
+    }
+
+    function lightCircle(char) {
+        _highLight(getCircle(char));
+    }
+
+    function doneCircle(char) {
+        _done(getCircle(char));
+    }
+
+    function deLightCircle(char) {
+        _deLight(getCircle(char));
+    }
+
+    function lightLine(char) {
+        _highLight(getLine(char));
+    }
+
+    function deLightLine(char){
+        _deLight(getLine(char));
+    }
+
+    function getCircle(char) {
+        return $("#c-" + char.toLowerCase());
+    }
+
+    function getLine(char) {
+        return $("#l-" + char.toLowerCase());
+    }
+
+    function _highLight(object) {
+        if(object.hasClass("circle")) {
+            object.css("border-color", "rgb(255, 138, 39)")
+                    .css("background-color", "#FFFFFFFF")
+                    .css("color", "rgb(255, 138, 39)");
+        } else {
+            object.css("background-color", "rgb(255, 138, 39)");
+        }
+    }
+
+    function _done(object) {
+        if(object.hasClass("circle")) {
+            object.css("border-color", "rgb(255, 138, 39)")
+                    .css("background-color", "rgb(255, 138, 39)")
+                    .css("color", "#FFFFFF");
+        }
+    }
+
+    function _deLight(object) {
+        if(object.hasClass("circle")) {
+            object.css("border-color", "#000000")
+                    .css("background-color", "rgba(0,0,0,0)")
+                    .css("color", "#000000");
+        } else {
+            object.css("background-color", "#000000");
+        }
+    }
+
+    function setText(str) {
+        $("#info-p").html(str);
+    }
+
+    function setCode(line) {
+        __heightLightCode(line);
+    }
+
+    function __heightLightCode(line) {
+        $("#code-" + line).css("background-color", "#000000").css("color", "#FFFFFF")
+                .siblings().css("background-color", "rgb(217, 81, 60)").css("color", "#000000")
+    }
+
+    function _setBtn(str) {
+        $("#start-p").html(str);
+    }
+
+    function addResult(char) {
+        $("#result-container").append("<div id=\"cr-" + char + "\" class=\"circle circle-r\">" + char + "</div>");
+    }
+
+</script>
+
+</html>

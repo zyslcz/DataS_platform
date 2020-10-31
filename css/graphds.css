@@ -1,0 +1,201 @@
+svg {
+  border: 2px solid;
+  background-color: #eeeeee;
+  cursor: default;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+svg:not(.active):not(.ctrl) {
+  cursor: crosshair;
+}
+
+path.link {
+  fill: none;
+  stroke: #333;
+  stroke-width: 4.3px;
+  cursor: default;
+}
+
+svg:not(.active):not(.ctrl) path.link {
+  cursor: pointer;
+}
+
+path.link.selected {
+  stroke-dasharray: 10,2;
+}
+
+path.link.dragline {
+  pointer-events: none;
+}
+
+path.link.hidden {
+  stroke-width: 0;
+}
+
+circle.node {
+  stroke: #333;
+  stroke-width: 2px;
+  cursor: pointer;
+}
+
+text {
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  pointer-events: none;
+}
+
+text.weight {
+  cursor: pointer;
+  font-weight: bold;
+  text-anchor: middle;
+}
+
+text.id {
+  text-anchor: middle;
+  font-weight: bold;
+}
+
+.tableTitle
+{
+
+  width: 100%;
+  background-color: #009900;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 10px 0px 10px 0px;
+  text-align: center;
+}
+.graphTable
+{
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.graphTable td
+{
+  border-width:0px 1px 1px 0px;
+  border:1px solid #000000;
+  text-align: center;
+  padding : 0;
+}
+
+.graphTable tr:hover
+{
+  background-color: #ffffff;
+}
+
+#IsTree, #IsTree0, #IsComplete, #IsComplete0, #IsBipartite, #IsBipartite0, #IsDAG0, #IsDAG
+{
+  font-family: Arial;
+  font-size:14px;
+}
+
+.bold
+{
+  font-weight: bold;
+}
+
+/*all tutorial stuff here*/
+#tutorial-1 {
+  top: 60px;
+  left: 60px;
+  width: 350px;
+}
+#tutorial-2 {
+  top: 60px;
+  left: 220px;
+  width: 230px;
+}
+  #tutorial-2:before {
+    bottom: 100%;
+    left: 50%;
+    border-bottom-color: black;
+    margin-left: -10px;
+  }
+#tutorial-3 {
+  bottom: 280px;
+  left: 60px;
+  width: 220px;
+}
+  #tutorial-3:before {
+    top: 100%;
+    left: 20%;
+    border-top-color: black;
+    margin-left: -10px;
+  }
+#tutorial-4 {
+  top: 300px;
+  left: 50%;
+  width: 200px;
+  margin-left: -110px;
+}
+  #tutorial-4:before {
+    bottom: 100%;
+    left: 50%;
+    border-bottom-color: black;
+    margin-left: -10px;
+  }
+#tutorial-5 {
+  bottom: 200px;
+  left: 250px;
+  width: 200px;
+}
+  #tutorial-5:before {
+    top: 100%;
+    left: 20%;
+    border-top-color: black;
+    margin-left: -10px;
+  }
+#tutorial-6 {
+  bottom: 200px;
+  left: 650px;
+  width: 180px;
+}
+  #tutorial-6:before {
+    top: 100%;
+    left: 20%;
+    border-top-color: black;
+    margin-left: -10px;
+  }
+
+#tutorial-7 {
+  bottom: 200px;
+  right: 150px;
+  width: 220px;
+  margin-left: -120px;
+}
+  #tutorial-7:before {
+    top: 100%;
+    left: 50%;
+    border-top-color: black;
+    margin-left: -10px;
+  }
+
+#tutorial-8 {
+  bottom: 200px;
+  left: 200px;
+  width: 200px;
+}
+  #tutorial-8:before {
+    top: 100%;
+    left: 20%;
+    border-top-color: black;
+    margin-left: -10px;
+  }
+#tutorial-9 {
+  top: 70px;
+  right: 60px;
+  width: 150px;
+}
+  #tutorial-9:before {
+    bottom: 100%;
+    left: 50%;
+    border-bottom-color: black;
+    margin-left: -10px;
+  }

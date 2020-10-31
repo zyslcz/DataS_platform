@@ -1,0 +1,1635 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <title>查找 - 数据结构演示</title>
+    <meta description="线性存储的数据结构可视化演示">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+
+    <link rel="stylesheet" href="ex/css/stylesheet.css">
+    <link rel="stylesheet" href="ex/css/common.css">
+    <link rel="stylesheet" href="ex/css/viz.css">
+    <link rel="stylesheet" href="ex/css/visual.css">
+    <link rel="stylesheet" href="ex/css/drawgraph.css">
+
+    <style>
+        #createfixedsize-input input {
+            width: 25px;
+            padding: 8px;
+            margin-right: 2px;
+            float: left;
+        }
+
+        #createfixedsize-go p {
+            padding: 8px 8px 7px;
+            float: right;
+        }
+
+        #createuserdefined-input input {
+            width: 75px;
+            padding: 8px;
+            margin-right: 2px;
+            float: left;
+        }
+
+        #createuserdefined-go p {
+            padding: 8px 8px 7px;
+            float: right;
+        }
+
+        #insertkth-input input {
+            width: 25px;
+            padding: 8px;
+            margin-right: 2px;
+            float: left;
+        }
+
+        #insertkth-go p {
+            padding: 8px 8px 7px;
+            float: right;
+        }
+
+        #inserthead-input input {
+            width: 25px;
+            padding: 8px;
+            margin-right: 2px;
+            float: left;
+        }
+
+        #inserthead-go p {
+            padding: 8px 8px 7px;
+            float: right;
+        }
+
+        #inserttail-input input {
+            width: 25px;
+            padding: 8px;
+            margin-right: 2px;
+            float: left;
+        }
+
+        #inserttail-go p {
+            padding: 8px 8px 7px;
+            float: right;
+        }
+
+        #removekth-input input {
+            width: 25px;
+            padding: 8px;
+            margin-right: 2px;
+            float: left;
+        }
+
+        #removekth-go p {
+            padding: 8px 8px 7px;
+            float: right;
+        }
+
+        .create {
+            bottom: 92px;
+            width: 500px;
+            float: left;
+        }
+
+        #create-random p {
+            padding: 7px 8px 8px;
+        }
+
+        #create-input input {
+            width: 25px;
+            padding: 10px 8px 5px;
+        }
+
+        #create-input-arr input {
+            width: 100px;
+            padding: 10px 8px 5px;
+        }
+
+        #create-random-sorted p {
+            padding: 7px 8px 8px;
+        }
+
+        #create-random-fixed-size p {
+            padding: 7px 8px 8px;
+        }
+
+        #create-from-arr p {
+            padding: 7px 8px 8px;
+        }
+
+        #create-err {
+            padding: 8px 0px 7px;
+        }
+
+        /* currently unused*/
+
+        .search {
+            bottom: 63px;
+        }
+
+        #find-min p {
+            padding: 5px 8px;
+        }
+
+        #find-max p {
+            padding: 5px 8px;
+        }
+
+        #search-input input {
+            width: 25px;
+            padding: 6px 8px 5px;
+        }
+
+        #search-peek-front p {
+            padding: 5px 8px;
+        }
+
+        #search-peek-back p {
+            padding: 5px 8px;
+        }
+
+        #search-go p {
+            padding: 5px 8px;
+        }
+
+        #search-err {
+            padding: 5px 0px;
+        }
+
+        /* currently unused*/
+
+        .insert {
+            bottom: 92px;
+        }
+
+        #insert-head p {
+            padding: 5px 8px;
+        }
+
+        #insert-tail p {
+            padding: 5px 8px;
+        }
+
+        #insert-kth p {
+            padding: 5px 8px;
+        }
+
+        #insert-input-kth input {
+            width: 50px;
+            padding: 6px 8px 5px;
+        }
+
+        #insert-input input {
+            width: 140px;
+            padding: 6px 8px 5px;
+        }
+
+        #insert-go p {
+            padding: 5px 8px;
+        }
+
+        #insert-err {
+            padding: 5px 0px;
+        }
+
+        #pushtop-input input {
+            width: 25px;
+            padding: 6px 8px 5px;
+        }
+
+        #pushtop-go p {
+            padding: 5px 8px;
+        }
+
+        #pushtop-err {
+            padding: 5px 0px;
+        }
+
+        #enqueueback-input input {
+            width: 25px;
+            padding: 6px 8px 5px;
+        }
+
+        #enqueueback-go p {
+            padding: 5px 8px;
+        }
+
+        #enqueueback-err {
+            padding: 5px 0px;
+        }
+
+        #insert-deque-input input {
+            width: 25px;
+            padding: 6px 8px 5px;
+        }
+
+        #insert-deque-front p {
+            padding: 5px 8px;
+        }
+
+        #insert-deque-back {
+            padding: 5px 8px;
+        }
+
+        #insert-deque-err {
+            padding: 5px 0px;
+        }
+
+        .remove {
+            bottom: 65px;
+        }
+
+        #remove-head p {
+            padding: 5px 8px;
+        }
+
+        #remove-tail p {
+            padding: 5px 8px;
+        }
+
+        #remove-kth p {
+            padding: 5px 8px;
+        }
+
+        #remove-input-kth input {
+            width: 50px;
+            padding: 6px 8px 5px;
+        }
+
+        #remove-input input {
+            width: 140px;
+            padding: 6px 8px 5px;
+        }
+
+        #remove-deque-front p {
+            padding: 5px 8px;
+        }
+
+        #remove-deque-back p {
+            padding: 5px 8px;
+        }
+
+        #remove-go p {
+            padding: 5px 8px;
+        }
+
+        /* currently unused*/
+        #remove-err {
+            padding: 5px 0px;
+        }
+
+        /* currently unused*/
+
+        .inorder {
+            bottom: 60px;
+        }
+
+        #inorder-err {
+            padding: 8px 0px 7px;
+        }
+
+        /* currently unused*/
+    </style>
+
+</head>
+
+<body>
+<div id="top-bar">
+    <a id="home" href="index.html">数据结构<span class="colour">演示平台</span></a>&nbsp;&nbsp;&nbsp;
+  <span id="title">
+    <a id='title-Linear' class='selected-viz'>顺序查找</a>
+    <a id='title-Binary'>二分查找</a>
+    <a id='title-Block'>分块查找</a>
+  </span>
+
+</div>
+<div id='viz'></div>
+<div id='current-action' class='panel'><p></p></div>
+
+<div id="actions" class="panel">
+    <p id="create">创建</p>
+    <p id="search" class="execAction" onClick=searchGeneric()>查找</p>
+</div>
+<div id="actions-hide" class="panel-hide"><img src="img/arrow_white_right.png" title="show/hide actions panel"/></div>
+
+<div id="actions-extras">
+    <div class="create action-menu-pullout">
+        <div id="create-random-sorted" class="execAction new-menu-option coloured-menu-option" onClick=randomLL()><p>
+            随机</p></div>
+        <div id="create-from-arr" class="execAction new-menu-option coloured-menu-option"
+             onclick=createModelingOpen("createuserdefined")><p>------ 自定义序列 ------</p>
+            <div id="createuserdefined-input" class="new-menu-option">
+                <input type="text" id="v-create-arr" title="Enter the elements separated by comma" autocomplete="off"
+                       value="1,2,3"/>
+                <div id="createuserdefined-go" class="execAction coloured-menu-option" onClick=nonRandom()
+                     title="创建一个序列"><p>开始</p></div>
+            </div>
+        </div>
+        <div id="create-err" class="err"></div>
+    </div>
+
+    <div class="search action-menu-pullout">
+        <div id="search-input" class="new-menu-option"><input type="text" id="v-search" title="请输入一个整数"
+                                                              autocomplete="off" value=5></div>
+        <div id="search-go" class="execAction coloured-menu-option" onclick=searchVertex()><p>确定</p></div>
+        <div id="search-err" class="err"></div>
+    </div>
+</div>
+
+
+<div id="status" class="panel"><p></p></div>
+<div id="status-hide" class="panel-hide"><img src="img/arrow_white_right.png" title="show/hide status panel"/></div>
+
+<div id="codetrace" class="panel">
+    <p id="code1" style="padding-top: 10px;"></p>
+    <p id="code2"></p>
+    <p id="code3"></p>
+    <p id="code4"></p>
+    <p id="code5"></p>
+    <p id="code6"></p>
+    <p id="code7" style="padding-bottom: 10px;"></p>
+</div>
+<div id="codetrace-hide" class="panel-hide"><img src="img/arrow_white_right.png" title="show/hide codetrace panel"/>
+</div>
+<div id="left-bar"></div>
+<div id="right-bar"></div>
+
+<div id="bottom-bar">
+    <a id='trigger-about'>关于</a>
+    <a id='trigger-team'>团队</a>
+</div>
+<div id="media-controls">
+    <div id='speed-control'>慢
+        <div id='speed-input'></div>
+        快
+    </div>
+    <span id="go-to-beginning" class="media-control-button" title="开始" onclick=goToBeginning()><img
+            src="img/goToBeginning.png" alt="开始"></span>
+    <span id="previous" class="media-control-button" title="上一步" onclick=stepBackward()><img
+            src="img/prevFrame.png" alt="上一步"></span>
+    <span id="pause" class="media-control-button" title="暂停" onclick=pause()><img src="img/pause.png"
+                                                                                     alt="暂停"></span>
+    <span id="play" class="media-control-button" title="播放" onclick=play()><img src="img/play.png" alt="播放"></span>
+    <span id="next" class="media-control-button" title="下一步" onclick=stepForward()><img src="img/nextFrame.png"
+                                                                                                 alt="下一步"></span>
+    <span id="go-to-end" class="media-control-button" title="结束" onclick=goToEnd()><img src="img/goToEnd.png"
+                                                                                               alt="结束"></span>
+    <div id="progress-bar" class="media-control-button"></div>
+</div>
+<div id='dark-overlay'></div>
+<div id="about" class="overlays"><h4>关于</h4><span class='close-overlay'>&#x2715;</span>
+    <div class='content'>
+
+    </div>
+</div>
+<div id="team" class="overlays"><h4>团队</h4><span class='close-overlay'>&#x2715;</span>
+    <div class='content'>
+
+    </div>
+</div>
+
+<script src="ex/js/jquery-2.2.2.min.js"></script>
+<script src="ex/js/jquery-ui.min.js"></script>
+<script src="ex/js/d3.min.js"></script>
+<script src="ex/js/viz.js"></script>
+<script src="ex/js/common.js"></script>
+<script src="ex/js/constant.js"></script>
+<script src="ex/js/properties.js"></script>
+<script src="ex/js/helperObjects.js"></script>
+<script src="ex/js/misc.js"></script>
+<script src="ex/js/Widget.js"></script>
+<script src="ex/js/GraphWidget.js"></script>
+<script src="ex/js/GraphVertexWidget.js"></script>
+<script src="ex/js/GraphEdgeWidget.js"></script>
+<script src="ex/js/drawgraph.js"></script>
+<script src="ex/js/jquery.cookie.js"></script>
+
+<script type="text/javascript">
+    var BACK_EDGE_CONST = 5000;
+
+    var List = function () {
+        var self = this;
+        var graphWidget = new GraphWidget();
+        var activeStatus = "linear";
+        var maxSize = 13;
+        var maxStackSize = 5;
+
+        var valueRange = [1, 100]; // Range of valid values of List vertexes allowed
+        var maxHeightAllowed = 10;
+
+        var initialArray = [15, 6, 23, 4, 7, 71, 5, 52];
+        var initialSortedArray = [17, 20, 25, 37, 39, 43, 44, 50];
+        var initialBlockArray = [9, 3, 8, 16, 20, 17, 25, 32, 36, 49, 35, 33];
+        var initialBlockIndexArray = [16, 32, 49];
+
+        var internalList = {};
+        var internalListIndex = {}
+        var amountVertex = 0;
+        var vertexClassNumberCounter = 9;
+        internalList["root"] = null;
+
+        if (activeStatus == "binary")
+            init(initialSortedArray);
+        else
+            init(initialArray);
+
+        this.setActiveStatus = function (newActiveStatus) {
+            if (activeStatus != newActiveStatus) {
+                clearScreen();
+                activeStatus = newActiveStatus;
+                if (activeStatus == "binary")
+                    init(initialSortedArray);
+                if (activeStatus == 'linear')
+                    init(initialArray);
+                if (activeStatus == 'block'){
+                    init(initialBlockArray);
+                    initArrIndex(initialBlockIndexArray);
+                }
+            }
+        }
+
+        this.getActiveStatus = function () {
+            return activeStatus;
+        }
+
+        this.widgetRecalculatePosition = function () {
+            recalculatePosition();
+        }
+
+        this.getGraphWidget = function () {
+            return graphWidget;
+        }
+
+        this.generate = function (initArr) {
+            init(initArr);
+        }
+
+        this.generateRandomSorted = function () {
+            var vertexAmt = Math.floor((Math.random() * 8 + 3));
+            var initArr = new Array();
+            while (initArr.length < vertexAmt) {
+                var random = Math.floor(1 + Math.random() * 98);
+                if ($.inArray(random, initArr) < 0)
+                    initArr.push(random);
+            }
+
+            initArr.sort(function (a, b) {
+                return a - b;
+            });
+            init(initArr);
+            return true;
+        };
+
+
+        this.generateUserDefined = function (vertexTextArr) {
+            var vertexAmt = vertexTextArr.length;
+
+            if (vertexAmt > maxSize) {
+                $('#create-err').html("错误，数组最大长度为 " + maxStackSize);
+                return false;
+            }
+
+            if (vertexTextArr == '') { // prevent creation of empty list
+                $('#create-err').html("错误，数组不能为空");
+                return false;
+            }
+
+            var initArr = new Array();
+            for (i = 0; i < vertexTextArr.length; i++) {
+                var vt = parseInt(vertexTextArr[i]);
+                if ($.inArray(vt, initArr) < 0)
+                    initArr.push(vt);
+            }
+
+
+            if (activeStatus == "binary") {
+                for (var i = 1; i < initArr.length; i++) {
+                    if (initArr[i] <= initArr[i - 1]) {
+                        $('#create-err').html("错误，二分查找必须创建一个有序数组");
+                        return false;
+                    }
+                }
+            }
+            init(initArr);
+            return true;
+        }
+
+        this.search = function (vertexText) {
+            var stateList = [];
+            var vertexTraversed = {};
+            var edgeTraversed = {};
+            var currentVertex = internalList["root"];
+            var cs = createState(internalList);
+            var currentVertexClass;
+            var key;
+            var index = 0;
+
+            // temp = head , index = 0
+            cs = createState(internalList, vertexTraversed, edgeTraversed);
+            currentVertexClass = internalList[currentVertex]["vertexClassNumber"];
+            cs["vl"][currentVertexClass]["state"] = VERTEX_HIGHLIGHTED;
+            cs["status"] = "开始查找";
+            cs["lineNo"] = 1;
+            stateList.push(cs);
+            //end
+            while (currentVertex != null) {
+                //while (temp.data != input)
+                cs = createState(internalList, vertexTraversed, edgeTraversed);
+                currentVertexClass = internalList[currentVertex]["vertexClassNumber"];
+                cs["vl"][currentVertexClass]["state"] = VERTEX_HIGHLIGHTED;
+                vertexTraversed[currentVertex] = true;
+                cs["status"] = "比较 " + currentVertex + " 与 " + vertexText + " (index = " + index + ")";
+                cs["lineNo"] = 2;
+                stateList.push(cs);
+                //end
+
+                if (parseInt(vertexText) != parseInt(currentVertex)) {
+                    //while (temp.data != input)
+                    cs = createState(internalList, vertexTraversed, edgeTraversed);
+                    currentVertexClass = internalList[currentVertex]["vertexClassNumber"];
+                    cs["vl"][currentVertexClass]["state"] = VERTEX_HIGHLIGHTED;
+                    cs["status"] = currentVertex + " 不等于 " + vertexText;
+                    cs["lineNo"] = 2;
+                    stateList.push(cs);
+                    //end
+
+                    //case when vertex is not found
+                    currentVertex = internalList[currentVertex]["rightChild"];
+                    if (currentVertex == null) {
+                        //temp = temp.next ,index++
+                        cs = createState(internalList, vertexTraversed, edgeTraversed);
+                        cs["status"] = "temp指向下一个节点";
+                        cs["lineNo"] = 3;
+                        stateList.push(cs);
+                        //end
+
+                        //if temp == null
+                        cs = createState(internalList, vertexTraversed, edgeTraversed);
+                        cs["status"] = "temp 为 null";
+                        cs["lineNo"] = 4;
+                        stateList.push(cs);
+                        //end
+
+                        //return -1
+                        cs = createState(internalList, vertexTraversed, edgeTraversed);
+                        cs["status"] = "节点 " + vertexText + " 查找失败";
+                        cs["lineNo"] = 5;
+                        stateList.push(cs);
+                        //end
+
+                        break;
+                    }
+
+                    //temp = temp.next ,index++
+                    cs = createState(internalList, vertexTraversed, edgeTraversed);
+                    parentVertex = internalList[currentVertex]["parent"];
+                    currentVertexClass = internalList[currentVertex]["vertexClassNumber"];
+                    cs["vl"][currentVertexClass]["state"] = VERTEX_HIGHLIGHTED;
+                    var edgeHighlighted = internalList[parentVertex]["vertexClassNumber"];
+                    edgeTraversed[edgeHighlighted] = true;
+                    cs["el"][edgeHighlighted]["animateHighlighted"] = true;
+                    cs["el"][edgeHighlighted]["state"] = EDGE_TRAVERSED;
+                    cs["status"] = "temp 指向下一个节点";
+                    cs["lineNo"] = 3;
+                    stateList.push(cs);
+                    //end
+
+                    //if temp==null
+                    cs = createState(internalList, vertexTraversed, edgeTraversed);
+                    currentVertexClass = internalList[currentVertex]["vertexClassNumber"];
+                    cs["vl"][currentVertexClass]["state"] = VERTEX_HIGHLIGHTED;
+                    cs["status"] = "temp 为 null, 继续查找";
+                    cs["lineNo"] = 4;
+                    stateList.push(cs);
+                    //end
+                }
+                else
+                    break;
+                index++;
+            }
+
+            //case when vertex is found
+            if (currentVertex != null) {
+                //return index
+                cs = createState(internalList, vertexTraversed, edgeTraversed);
+                currentVertexClass = internalList[currentVertex]["vertexClassNumber"];
+                cs["vl"][currentVertexClass]["state"] = VERTEX_HIGHLIGHTED;
+                cs["status"] = "找到节点 " + vertexText + " 返回" + " (index = " + index + ")";
+                cs["lineNo"] = 6;
+                stateList.push(cs);
+                //end
+            }
+
+            cs = createState(internalList);
+            cs["status"] = "查找完成！";
+            cs["lineNo"] = 0;
+            stateList.push(cs);
+
+            graphWidget.startAnimation(stateList);
+            populatePseudocode(0);
+            return true;
+        };
+        this.searchLinear = this.search;
+
+        this.searchBinary = function(vertexText){
+            var stateList = [];
+            var vertexTraversed = {};
+            var edgeTraversed = {};
+            var currentVertex = internalList["root"];
+            var currentArray = new Array();
+            var cs = createState(internalList);
+            var index = 0;
+
+            var currentLength = 0;
+
+            currentArray.push(currentVertex);
+
+            while(internalList[currentVertex]["rightChild"] != null){
+                currentVertex = internalList[currentVertex]["rightChild"];
+                currentArray.push(currentVertex);
+            }
+
+            currentLength = currentArray.length;
+            var lIndex = 0;//xiao
+            var rIndex = currentLength - 1;//da
+
+            cs = createState(internalList, vertexTraversed, edgeTraversed);
+            cs["status"] = "开始查找";
+            stateList.push(cs);
+
+
+            for (var i = lIndex; i <= rIndex; i++) {
+                vertexTraversed[currentArray[i]] = true;
+            }
+
+            cs = createState(internalList, vertexTraversed, edgeTraversed);
+            cs["status"] = "max = "+ rIndex +" ( data = "+ currentArray[rIndex] +" )<br>min = "+ lIndex +" ( data = "+ currentArray[lIndex] +" )";
+            cs["lineNo"] = 1;
+            stateList.push(cs);
+
+            while (lIndex <= rIndex){
+
+                cs = createState(internalList, vertexTraversed, edgeTraversed);
+                cs["status"] = "判断 min ( "+ lIndex +" ) 不等于 max ( "+ rIndex +" ), 成立";
+                cs["lineNo"] = 2;
+                stateList.push(cs);
+
+                index = lIndex + Math.floor((rIndex - lIndex) / 2);
+                cs = createState(internalList, vertexTraversed, edgeTraversed);
+                cs["vl"][index]["state"] = VERTEX_HIGHLIGHTED;
+                cs["status"] = "将 index 赋值为中间节点 "+ index +" ( data = "+ currentArray[index] +" ) ";
+                cs["lineNo"] = 3;
+                stateList.push(cs);
+
+
+                cs = createState(internalList, vertexTraversed, edgeTraversed);
+                cs["vl"][index]["state"] = VERTEX_HIGHLIGHTED;
+                cs["status"] = "比较 " + vertexText + " 与 " + currentArray[index];
+                cs["lineNo"] = 3;
+                stateList.push(cs);
+
+                if (parseInt(vertexText) < parseInt(currentArray[index])){
+
+                    cs = createState(internalList, vertexTraversed, edgeTraversed);
+                    cs["vl"][index]["state"] = VERTEX_HIGHLIGHTED;
+                    cs["status"] = vertexText + " < " + currentArray[index];
+                    cs["lineNo"] = 4;
+                    stateList.push(cs);
+
+                    for (var i = index; i < currentLength; i++) {
+                        delete vertexTraversed[currentArray[i]];
+                    }
+
+                    cs = createState(internalList, vertexTraversed, edgeTraversed);
+                    cs["vl"][index]["state"] = VERTEX_HIGHLIGHTED;
+                    cs["status"] = "将 index ( "+ index +" ) 赋值给 max";
+                    cs["lineNo"] = 4;
+                    stateList.push(cs);
+                    rIndex = index - 1;
+
+                }else {
+                    if(parseInt(vertexText) > parseInt(currentArray[index])){
+                        cs = createState(internalList, vertexTraversed, edgeTraversed);
+                        cs["vl"][index]["state"] = VERTEX_HIGHLIGHTED;
+                        cs["status"] = vertexText + " > " + currentArray[index];
+                        cs["lineNo"] = 5;
+                        stateList.push(cs);
+
+                        for (var i = 0; i <= index; i++) {
+                            delete vertexTraversed[currentArray[i]];
+                        }
+
+                        cs = createState(internalList, vertexTraversed, edgeTraversed);
+                        cs["vl"][index]["state"] = VERTEX_HIGHLIGHTED;
+                        cs["status"] = "将 index ( "+ index +" ) 赋值给 min";
+                        cs["lineNo"] = 5;
+                        stateList.push(cs);
+                        lIndex = index + 1;
+                    }else{
+                        cs = createState(internalList, vertexTraversed, edgeTraversed);
+                        cs["vl"][index]["state"] = VERTEX_HIGHLIGHTED;
+                        cs["status"] = vertexText + " = " + currentArray[index];
+                        cs["lineNo"] = 6;
+                        stateList.push(cs);
+
+                        for (var i = 0; i <= currentLength; i++) {
+                            delete vertexTraversed[currentArray[i]];
+                        }
+
+                        cs = createState(internalList, vertexTraversed, edgeTraversed);
+                        cs["vl"][index]["state"] = VERTEX_HIGHLIGHTED;
+                        cs["status"] = "查找 "+ vertexText +" 成功, index = " + index;
+                        cs["lineNo"] = 6;
+                        stateList.push(cs);
+
+                        graphWidget.startAnimation(stateList);
+                        populatePseudocode(1);
+                        return true;
+                    }
+                }
+            }
+            cs = createState(internalList, vertexTraversed, edgeTraversed);
+            cs["status"] = "判断 min ( "+ lIndex +" ) 不等于 max ( "+ rIndex +" ), 不成立";
+            cs["lineNo"] = 2;
+            stateList.push(cs);
+
+            for (var i = 0; i < currentLength; i++) {
+                delete vertexTraversed[currentArray[i]];
+            }
+
+            cs = createState(internalList, vertexTraversed, edgeTraversed);
+            cs["status"] = vertexText + " 不在当前数组中";
+            cs["lineNo"] = 7;
+            stateList.push(cs);
+
+            graphWidget.startAnimation(stateList);
+            populatePseudocode(1);
+            return true;
+
+        };
+
+        this.searchBlock = function(vertexText){
+            var stateList = [];
+            var vertexTraversed = {};
+            var edgeTraversed = {};
+            var cs = createState(internalList);
+            var csI = createState(internalListIndex);
+            var index = 0;
+            var currentVertex = internalListIndex["root"];
+            var currentVertexClass;
+
+            csI = createState(internalListIndex, vertexTraversed, edgeTraversed);
+            currentVertexClass = internalListIndex[currentVertex]["vertexClassNumber"];
+            csI["vl"][currentVertexClass]["state"] = VERTEX_HIGHLIGHTED;
+            csI["status"] = "开始查找";
+            csI["lineNo"] = 1;
+
+            stateList.push(mergeCSArray(cs, csI));
+
+            while (currentVertex != null) {
+                csI = createState(internalListIndex, vertexTraversed, edgeTraversed);
+                currentVertexClass = internalListIndex[currentVertex]["vertexClassNumber"];
+                csI["vl"][currentVertexClass]["state"] = VERTEX_HIGHLIGHTED;
+                vertexTraversed[currentVertex] = true;
+                csI["status"] = "比较 " + currentVertex + " 与 " + vertexText + " (index = " + index + ")";
+                csI["lineNo"] = 2;
+                stateList.push(mergeCSArray(cs, csI));
+
+                if (parseInt(vertexText) > parseInt(currentVertex)) {
+                    csI = createState(internalListIndex, vertexTraversed, edgeTraversed);
+                    currentVertexClass = internalListIndex[currentVertex]["vertexClassNumber"];
+                    csI["vl"][currentVertexClass]["state"] = VERTEX_HIGHLIGHTED;
+                    csI["status"] = vertexText + ' < ' + currentVertex ;
+                    csI["lineNo"] = 2;
+                    stateList.push(mergeCSArray(cs, csI));
+
+                    currentVertex = internalListIndex[currentVertex]["rightChild"];
+                    if (currentVertex == null) {
+                        csI = createState(internalListIndex, vertexTraversed, edgeTraversed);
+                        csI["status"] = "temp指向下一个节点";
+                        csI["lineNo"] = 3;
+                        stateList.push(mergeCSArray(cs, csI));
+
+                        csI = createState(internalListIndex, vertexTraversed, edgeTraversed);
+                        csI["status"] = "temp 不等于 input";
+                        csI["lineNo"] = 4;
+                        stateList.push(mergeCSArray(cs, csI));
+
+                        csI = createState(internalListIndex, vertexTraversed, edgeTraversed);
+                        csI["status"] = "节点 " + vertexText + " 查找失败";
+                        csI["lineNo"] = 5;
+                        stateList.push(mergeCSArray(cs, csI));
+
+                        break;
+                    }
+
+                    csI = createState(internalListIndex, vertexTraversed, edgeTraversed);
+                    parentVertex = internalListIndex[currentVertex]["parent"];
+                    currentVertexClass = internalListIndex[currentVertex]["vertexClassNumber"];
+                    csI["vl"][currentVertexClass]["state"] = VERTEX_HIGHLIGHTED;
+                    var edgeHighlighted = internalListIndex[parentVertex]["vertexClassNumber"];
+                    edgeTraversed[edgeHighlighted] = true;
+                    csI["el"][edgeHighlighted]["animateHighlighted"] = true;
+                    csI["el"][edgeHighlighted]["state"] = EDGE_TRAVERSED;
+                    csI["status"] = "temp 指向下一个节点";
+                    csI["lineNo"] = 3;
+                    stateList.push(mergeCSArray(cs, csI));
+
+                    csI = createState(internalListIndex, vertexTraversed, edgeTraversed);
+                    currentVertexClass = internalListIndex[currentVertex]["vertexClassNumber"];
+                    csI["vl"][currentVertexClass]["state"] = VERTEX_HIGHLIGHTED;
+                    csI["status"] = "temp 为 null, 继续查找";
+                    csI["lineNo"] = 4;
+                    stateList.push(mergeCSArray(cs, csI));
+                }
+                else{
+                    if(parseInt(vertexText) == parseInt(currentVertex)){
+                        csI = createState(internalListIndex, vertexTraversed, edgeTraversed);
+                        currentVertexClass = internalListIndex[currentVertex]["vertexClassNumber"];
+                        csI["vl"][currentVertexClass]["state"] = VERTEX_HIGHLIGHTED;
+                        csI["status"] = "找到节点 " + vertexText + " 返回" + " (index = " + index + ")";
+                        csI["lineNo"] = 6;
+                        stateList.push(mergeCSArray(cs, csI));
+
+                        csI = createState(internalList);
+                        csI["status"] = "查找完成！";
+                        csI["lineNo"] = 0;
+                        stateList.push(mergeCSArray(cs, csI));
+
+                        graphWidget.startAnimation(stateList);
+                        populatePseudocode(2);
+                        return true;
+                    }else {
+
+                        vertexTraversed = {};
+                        edgeTraversed = {};
+                        var hightLightIndex = 99 + index;
+                        cs = createState(internalList);
+                        csI = createState(internalListIndex);
+                        csI['vl'][hightLightIndex]['state'] = VERTEX_HIGHLIGHTED;
+
+                        currentVertex = initialBlockArray[index * 4];
+                        var endIndex = (index + 1) * 4;
+                        index = index * 4;
+
+
+                        vertexTraversed = {};
+                        edgeTraversed = {};
+                        cs = createState(internalList, vertexTraversed, edgeTraversed);
+                        currentVertexClass = internalList[currentVertex]["vertexClassNumber"];
+                        cs["vl"][currentVertexClass]["state"] = VERTEX_HIGHLIGHTED;
+
+                        cs["status"] = "开始查找";
+                        cs["lineNo"] = 1;
+                        stateList.push(mergeCSArray(csI, cs));
+
+                        while (currentVertex != null && index < endIndex - 1) {
+                            //while (temp.data != input)
+                            cs = createState(internalList, vertexTraversed, edgeTraversed);
+                            currentVertexClass = internalList[currentVertex]["vertexClassNumber"];
+                            cs["vl"][currentVertexClass]["state"] = VERTEX_HIGHLIGHTED;
+                            vertexTraversed[currentVertex] = true;
+                            cs["status"] = "比较 " + currentVertex + " 与 " + vertexText + " (index = " + index + ")";
+                            cs["lineNo"] = 2;
+                            stateList.push(mergeCSArray(csI, cs));
+                            //end
+
+                            if (parseInt(vertexText) != parseInt(currentVertex)) {
+                                //while (temp.data != input)
+                                cs = createState(internalList, vertexTraversed, edgeTraversed);
+                                currentVertexClass = internalList[currentVertex]["vertexClassNumber"];
+                                cs["vl"][currentVertexClass]["state"] = VERTEX_HIGHLIGHTED;
+                                cs["status"] = currentVertex + " 不等于 " + vertexText;
+                                cs["lineNo"] = 2;
+                                stateList.push(mergeCSArray(csI, cs));
+                                //end
+
+                                //case when vertex is not found
+                                currentVertex = internalList[currentVertex]["rightChild"];
+                                if (currentVertex == null) {
+                                    //temp = temp.next ,index++
+                                    cs = createState(internalList, vertexTraversed, edgeTraversed);
+                                    cs["status"] = "temp指向下一个节点";
+                                    cs["lineNo"] = 3;
+                                    stateList.push(mergeCSArray(csI, cs));
+                                    //end
+
+                                    //if temp == null
+                                    cs = createState(internalList, vertexTraversed, edgeTraversed);
+                                    cs["status"] = "temp 为 null";
+                                    cs["lineNo"] = 4;
+                                    stateList.push(mergeCSArray(csI, cs));
+                                    //end
+
+                                    //return -1
+                                    cs = createState(internalList, vertexTraversed, edgeTraversed);
+                                    cs["status"] = "节点 " + vertexText + " 查找失败";
+                                    cs["lineNo"] = 5;
+                                    stateList.push(mergeCSArray(csI, cs));
+                                    //end
+
+                                    break;
+                                }
+
+                                //temp = temp.next ,index++
+                                cs = createState(internalList, vertexTraversed, edgeTraversed);
+                                parentVertex = internalList[currentVertex]["parent"];
+                                currentVertexClass = internalList[currentVertex]["vertexClassNumber"];
+                                cs["vl"][currentVertexClass]["state"] = VERTEX_HIGHLIGHTED;
+                                var edgeHighlighted = internalList[parentVertex]["vertexClassNumber"];
+                                edgeTraversed[edgeHighlighted] = true;
+                                cs["el"][edgeHighlighted]["animateHighlighted"] = true;
+                                cs["el"][edgeHighlighted]["state"] = EDGE_TRAVERSED;
+                                cs["status"] = "temp 指向下一个节点";
+                                cs["lineNo"] = 3;
+                                stateList.push(mergeCSArray(csI, cs));
+                                //end
+
+                                //if temp==null
+                                cs = createState(internalList, vertexTraversed, edgeTraversed);
+                                currentVertexClass = internalList[currentVertex]["vertexClassNumber"];
+                                cs["vl"][currentVertexClass]["state"] = VERTEX_HIGHLIGHTED;
+                                cs["status"] = "temp 为 null, 继续查找";
+                                cs["lineNo"] = 4;
+                                stateList.push(mergeCSArray(csI, cs));
+                                //end
+                            }
+                            else
+                                break;
+                            index++;
+                        }
+
+
+                        if (currentVertex != null && index < endIndex) {
+                            cs = createState(internalList, vertexTraversed, edgeTraversed);
+                            currentVertexClass = internalList[currentVertex]["vertexClassNumber"];
+                            cs["vl"][currentVertexClass]["state"] = VERTEX_HIGHLIGHTED;
+                            cs["status"] = "找到节点 " + vertexText + " 返回" + " (index = " + index + ")";
+                            cs["lineNo"] = 6;
+                            stateList.push(mergeCSArray(csI, cs));
+                        }
+
+                        cs = createState(internalList);
+                        cs["status"] = "查找完成！";
+                        cs["lineNo"] = 0;
+                        var finalCs = mergeCSArray(cs, csI);
+                        stateList.push(finalCs);
+
+                        graphWidget.startAnimation(stateList);
+                        populatePseudocode(2);
+                        return true;
+                    }
+                }
+                index++;
+            }
+
+            csI = createState(internalListIndex, vertexTraversed, edgeTraversed);
+            csI["status"] = "节点 " + vertexText + " 不在当前数组中！";
+            csI["lineNo"] = 6;
+            stateList.push(mergeCSArray(cs, csI));
+
+            csI = createState(internalListIndex);
+            csI["status"] = "查找完成！";
+            csI["lineNo"] = 0;
+            stateList.push(mergeCSArray(cs, csI));
+
+            graphWidget.startAnimation(stateList);
+            populatePseudocode(2);
+            return true;
+
+
+        };
+
+        function init(initArr) {
+            var i;
+            amountVertex = 0;
+            clearScreen();
+
+            for (i = 0; i < initArr.length; i++) {
+                var parentVertex = internalList["root"];
+                var newVertex = parseInt(initArr[i]);
+
+                if (parentVertex == null) {
+                    internalList["root"] = parseInt(newVertex);
+                    internalList[newVertex] = {
+                        "parent": null,
+                        "leftChild": null,
+                        "rightChild": null,
+                        "vertexClassNumber": amountVertex
+                    };
+                }
+                else {
+                    while (true) {
+                        if (internalList[parentVertex]["rightChild"] == null)
+                            break;
+                        parentVertex = internalList[parentVertex]["rightChild"];
+                    }
+                    internalList[parentVertex]["rightChild"] = newVertex;
+                    internalList[newVertex] = {
+                        "parent": parentVertex,
+                        "leftChild": null,
+                        "rightChild": null,
+                        "vertexClassNumber": amountVertex
+                    }
+                }
+
+                amountVertex++;
+            }
+
+            recalculatePosition();
+
+            for (key in internalList) {
+                if (key == "root")
+                    continue;
+                graphWidget.addVertex(internalList[key]["cx"], internalList[key]["cy"], key, internalList[key]["vertexClassNumber"], true);
+            }
+
+            for (key in internalList) {
+                if (key == "root") continue;
+                if (key == internalList["root"]) continue;
+                var parentVertex = internalList[key]["parent"];
+
+                graphWidget.addEdge(internalList[parentVertex]["vertexClassNumber"], internalList[key]["vertexClassNumber"], internalList[parentVertex]["vertexClassNumber"], EDGE_TYPE_DE, 1, true);
+                if ((activeStatus == "doublylist") || (activeStatus == "deque"))
+                    graphWidget.addEdge(internalList[key]["vertexClassNumber"], internalList[parentVertex]["vertexClassNumber"], internalList[parentVertex]["vertexClassNumber"] + BACK_EDGE_CONST, EDGE_TYPE_DE, 1, true);
+            }
+
+        }
+
+        function initArrIndex(initArr) {
+            var i;
+            amountVertex = 99;
+
+            for (i = 0; i < initArr.length; i++) {
+                var parentVertex = internalListIndex["root"];
+                var newVertex = parseInt(initArr[i]);
+
+                if (parentVertex == null) {
+                    internalListIndex["root"] = parseInt(newVertex);
+                    internalListIndex[newVertex] = {
+                        "parent": null,
+                        "leftChild": null,
+                        "rightChild": null,
+                        "vertexClassNumber": amountVertex
+                    };
+                }
+                else {
+                    while (true) {
+                        if (internalListIndex[parentVertex]["rightChild"] == null)
+                            break;
+                        parentVertex = internalListIndex[parentVertex]["rightChild"];
+                    }
+                    internalListIndex[parentVertex]["rightChild"] = newVertex;
+                    internalListIndex[newVertex] = {
+                        "parent": parentVertex,
+                        "leftChild": null,
+                        "rightChild": null,
+                        "vertexClassNumber": amountVertex
+                    }
+                }
+
+                amountVertex++;
+            }
+
+            recalculatePositionIndex();
+
+            for (key in internalListIndex) {
+                if (key == "root")
+                    continue;
+                graphWidget.addVertex(internalListIndex[key]["cx"], internalListIndex[key]["cy"], key, internalListIndex[key]["vertexClassNumber"], true);
+            }
+
+            for (key in internalListIndex) {
+                if (key == "root") continue;
+                if (key == internalListIndex["root"]) continue;
+                var parentVertex = internalListIndex[key]["parent"];
+
+                graphWidget.addEdge(internalListIndex[parentVertex]["vertexClassNumber"], internalListIndex[key]["vertexClassNumber"], internalListIndex[parentVertex]["vertexClassNumber"], EDGE_TYPE_DE, 1, true);
+                if ((activeStatus == "doublylist") || (activeStatus == "deque"))
+                    graphWidget.addEdge(internalListIndex[key]["vertexClassNumber"], internalListIndex[parentVertex]["vertexClassNumber"], internalListIndex[parentVertex]["vertexClassNumber"] + BACK_EDGE_CONST, EDGE_TYPE_DE, 1, true);
+            }
+
+        }
+
+        function clearScreen() {
+            var key;
+
+            for (key in internalList) {
+                if (key == "root")
+                    continue;
+                graphWidget.removeEdge(internalList[key]["vertexClassNumber"] + BACK_EDGE_CONST);
+                graphWidget.removeEdge(internalList[key]["vertexClassNumber"]);
+            }
+
+            for (key in internalList) {
+                if (key == "root")
+                    continue;
+                graphWidget.removeVertex(internalList[key]["vertexClassNumber"]);
+            }
+
+            internalList = {};
+            internalList["root"] = null;
+            amountVertex = 0;
+        }
+
+        /*
+         * internalListObject: a JS object with the same structure of internalList. This means the List doen't have to be the List stored in this class
+         * vertexTraversed: JS object with the vertexes of the List which are to be marked as traversed as the key
+         * edgeTraversed: JS object with the edges of the List which are to be marked as traversed as the key
+         */
+
+        function createState(internalListObject, vertexTraversed, edgeTraversed) {
+            if (vertexTraversed == null || vertexTraversed == undefined || !(vertexTraversed instanceof Object))
+                vertexTraversed = {};
+            if (edgeTraversed == null || edgeTraversed == undefined || !(edgeTraversed instanceof Object))
+                edgeTraversed = {};
+
+            var state = {
+                "vl": {},
+                "el": {}
+            };
+
+            var key, vertexClass;
+
+            for (key in internalListObject) {
+                if (key != "root") {
+                    vertexClass = internalListObject[key]["vertexClassNumber"]
+
+                    state["vl"][vertexClass] = {};
+
+                    state["vl"][vertexClass]["cx"] = internalListObject[key]["cx"];
+                    state["vl"][vertexClass]["cy"] = internalListObject[key]["cy"];
+                    state["vl"][vertexClass]["text"] = key;
+                    state["vl"][vertexClass]["state"] = VERTEX_DEFAULT;
+                }
+
+                if (internalListObject[key]["rightChild"] == null)
+                    continue;
+
+                parentChildEdgeId = internalListObject[key]["vertexClassNumber"];
+
+                state["el"][parentChildEdgeId] = {};
+
+                state["el"][parentChildEdgeId]["vertexA"] = internalListObject[key]["vertexClassNumber"];
+                state["el"][parentChildEdgeId]["vertexB"] = internalListObject[internalListObject[key]["rightChild"]]["vertexClassNumber"];
+                state["el"][parentChildEdgeId]["type"] = EDGE_TYPE_DE;
+                state["el"][parentChildEdgeId]["weight"] = 1;
+                state["el"][parentChildEdgeId]["state"] = EDGE_DEFAULT;
+                state["el"][parentChildEdgeId]["animateHighlighted"] = false;
+
+                // add an edge for doubly linked list
+                if ((activeStatus == "doublylist") || (activeStatus == "deque")) {
+                    parentChildEdgeId = internalListObject[key]["vertexClassNumber"] + BACK_EDGE_CONST;
+                    state["el"][parentChildEdgeId] = {};
+
+                    state["el"][parentChildEdgeId]["vertexA"] = internalListObject[internalListObject[key]["rightChild"]]["vertexClassNumber"];
+                    state["el"][parentChildEdgeId]["vertexB"] = internalListObject[key]["vertexClassNumber"];
+                    state["el"][parentChildEdgeId]["type"] = EDGE_TYPE_DE;
+                    state["el"][parentChildEdgeId]["weight"] = 1;
+                    state["el"][parentChildEdgeId]["state"] = EDGE_DEFAULT;
+                    state["el"][parentChildEdgeId]["animateHighlighted"] = false;
+                }
+            }
+
+            for (key in vertexTraversed) {
+                vertexClass = internalListObject[key]["vertexClassNumber"];
+                state["vl"][vertexClass]["state"] = VERTEX_TRAVERSED;
+            }
+
+            for (key in edgeTraversed)
+                state["el"][key]["state"] = EDGE_TRAVERSED;
+
+            return state;
+        }
+
+        // modified recalculateposition
+        function recalculatePosition() {
+            updatePosition(internalList["root"]);
+
+            function updatePosition(currentVertex) {
+                if (currentVertex == null)
+                    return;
+
+                if (activeStatus == "stack") { // relayout vertical
+                    if (currentVertex == internalList["root"])
+                        internalList[currentVertex]["cy"] = 20;
+                    else {
+                        var parentVertex = internalList[currentVertex]["parent"]
+                        internalList[currentVertex]["cy"] = internalList[parentVertex]["cy"] + 70;
+                    }
+                    internalList[currentVertex]["cx"] = 350;
+                }
+                else { // relayout horizontal
+                    if (currentVertex == internalList["root"])
+                        internalList[currentVertex]["cx"] = 20;
+                    else {
+                        var parentVertex = internalList[currentVertex]["parent"];
+                        internalList[currentVertex]["cx"] = internalList[parentVertex]["cx"] + 70;
+                    }
+                    internalList[currentVertex]["cy"] = 50;
+                }
+
+                updatePosition(internalList[currentVertex]["rightChild"]);
+            }
+        }
+
+        function recalculatePositionIndex() {
+            updatePosition(internalListIndex["root"]);
+
+            function updatePosition(currentVertex) {
+                if (currentVertex == null)
+                    return;
+
+                if (activeStatus == "stack") { // relayout vertical
+                    if (currentVertex == internalListIndex["root"])
+                        internalListIndex[currentVertex]["cy"] = 200;
+                    else {
+                        var parentVertex = internalListIndex[currentVertex]["parent"]
+                        internalListIndex[currentVertex]["cy"] = internalListIndex[parentVertex]["cy"] + 90;
+                    }
+                    internalListIndex[currentVertex]["cx"] = 350;
+                }
+                else { // relayout horizontal
+                    if (currentVertex == internalListIndex["root"])
+                        internalListIndex[currentVertex]["cx"] = 300;
+                    else {
+                        var parentVertex = internalListIndex[currentVertex]["parent"];
+                        internalListIndex[currentVertex]["cx"] = internalListIndex[parentVertex]["cx"] + 90;
+                    }
+                    internalListIndex[currentVertex]["cy"] = 200;
+                }
+
+                updatePosition(internalListIndex[currentVertex]["rightChild"]);
+            }
+        }
+
+        function populatePseudocode(act) {
+            switch (act) {
+                case 0: // linear
+                    $('#code1').html('Node temp = head,;int index = 0;');
+                    $('#code2').html('while(temp.data != input){');
+                    $('#code3').html('&nbsp&nbsptemp = temp.next; index++;');
+                    $('#code4').html('&nbsp&nbsp if (temp == null){');
+                    $('#code5').html('&nbsp&nbsp&nbsp&nbspreturn -1;}}');
+                    $('#code6').html('return index;');
+                    $('#code7').html('');
+                    break;
+                case 1: // binary
+                    $('#code1').html('int rIndex = max; int lIndex = min;');
+                    $('#code2').html('while (lIndex <= rIndex){');
+                    $('#code3').html('index = (rIndex - lIndex) / 2;');
+                    $('#code4').html('&nbsp;&nbsp;if (input < index.data){rIndex=index+1};');
+                    $('#code5').html('&nbsp;&nbsp;else if (input > index.data){lIndex = index - 1;}');
+                    $('#code6').html('&nbsp;&nbsp;&nbsp;&nbsp;else{return index;}');
+                    $('#code7').html('}return -1;');
+                    break;
+
+                case 2: // block
+                    $('#code1').html('Node temp = head,int groupindex = 0;');
+                    $('#code2').html('while(input.data < temp.data){ ');
+                    $('#code3').html('&nbsp;&nbsp;tempNext = temp.next;groupindex++;');
+                    $('#code4').html('&nbsp;&nbsp;if (input.data == temp.data){return temp.index;}');
+                    $('#code5').html('&nbsp;&nbsp;else {return -1;}}');
+                    $('#code6').html('searchLinear(groupeIndex);');
+                    $('#code7').html('');
+                    break;
+
+            }
+        }
+    };
+
+
+    function mergeCSArray(arr1, arr2) {
+        for(var index in arr1['el']){
+            arr2['el'][index] = arr1['el'][index];
+        }
+
+        for(var index in arr1['vl']){
+            arr2['vl'][index] = arr1['vl'][index];
+        }
+        return arr2;
+    }
+    // List actions
+    //actions panel stuff
+    var actionsWidth = 150;
+    var statusCodetraceWidth = 420;
+
+    var isCreateOpen = false;
+    var isSearchOpen = false;
+    var isInsertOpen = false;
+    var isRemoveOpen = false;
+
+    function openCreate() {
+        $(".create").css("bottom", "92px");
+        $('#createfixedsize-input').hide();
+        $('#createuserdefined-input').hide();
+        if (!isCreateOpen) {
+            $('.create').fadeIn('fast');
+            isCreateOpen = true;
+        }
+        if(listWidget.getActiveStatus == 'block'){
+            $('#create-err').html("分块查找暂不支持自定义创建");
+            $('#create-from-arr').css('display', 'none');
+        }else {
+            $('#create-err').html("");
+            $('#create-from-arr').css('display', 'block');
+        }
+    }
+
+    function closeCreate() {
+        if (isCreateOpen) {
+            $('.create').fadeOut('fast');
+            $('#create-err').html("");
+            isCreateOpen = false;
+        }
+    }
+
+    function openSearch() {
+        if (!isSearchOpen) {
+            $('.search').fadeIn('fast');
+            isSearchOpen = true;
+        }
+    }
+
+    function closeSearch() {
+        if (isSearchOpen) {
+            $('.search').fadeOut('fast');
+            $('#search-err').html("");
+            isSearchOpen = false;
+        }
+    }
+
+    function openInsert() {
+        $(".insert").css("bottom", "92px");
+        $('#insertkth-input').hide();
+        $('#inserthead-input').hide();
+        $('#inserttail-input').hide();
+        if (!isInsertOpen) {
+            $('.insert').fadeIn('fast');
+            isInsertOpen = true;
+        }
+    }
+
+    function closeInsert() {
+        if (isInsertOpen) {
+            $('.insert').fadeOut('fast');
+            $('#insert-err').html("");
+            isInsertOpen = false;
+        }
+    }
+
+    function openRemove() {
+        $(".remove").css("bottom", "65px");
+        $('#removekth-input').hide();
+        if (!isRemoveOpen) {
+            $('.remove').fadeIn('fast');
+            isRemoveOpen = true;
+        }
+    }
+
+    function closeRemove() {
+        if (isRemoveOpen) {
+            $('.remove').fadeOut('fast');
+            $('#remove-err').html("");
+            isRemoveOpen = false;
+        }
+    }
+
+    function hideEntireActionsPanel() {
+        closeCreate();
+        closeSearch();
+        closeInsert();
+        closeRemove();
+        hideActionsPanel();
+    }
+
+
+    // local
+    var listWidget = new List(), gw;
+
+    $(function () {
+        $('#play').hide();
+        gw = listWidget.getGraphWidget();
+        listWidget.setActiveStatus("linear");
+
+        var llMode = getQueryVariable("mode");
+        if (llMode.length > 0) {
+            $('#title-' + llMode).click();
+        }
+        var createLL = getQueryVariable("create");
+        if (createLL.length > 0) {
+            var newLL = createLL.split(",");
+            listWidget.generate(newLL);
+        }
+        var operation = getQueryVariable("operation");
+        var operationValue = getQueryVariable("operationValue");
+        var operationMode = getQueryVariable("operationMode");
+        if (operation.length > 0) {
+            switch (operation) {
+                case "insert":
+                    openInsert();
+                    insertModelingOpen(operationMode);
+                    $("#" + operationMode + "-input input").val(operationValue);
+            }
+        }
+
+        $('#create').click(function () {
+            closeSearch();
+            closeInsert();
+            closeRemove();
+            openCreate();
+        });
+
+        $('#search').click(function () {
+            closeCreate();
+            closeInsert();
+            closeRemove();
+            openSearch();
+        });
+
+        $('#insert').click(function () {
+            closeCreate();
+            closeSearch();
+            closeRemove();
+            openInsert();
+        });
+
+        $('#remove').click(function () {
+            closeCreate();
+            closeSearch();
+            closeInsert();
+            openRemove();
+        });
+
+
+    });
+
+    // title changing
+    $('#title-Linear').click(function () {
+        if (isPlaying) stop();
+        hideEntireActionsPanel();
+        showActionsPanel();
+        displayList();
+        changeTextLinear();
+        hideStatusPanel();
+        hideCodetracePanel();
+        listWidget.setActiveStatus("linear");
+    });
+
+    $('#title-Binary').click(function () {
+        if (isPlaying) stop();
+        hideEntireActionsPanel();
+        showActionsPanel();
+        displayBinary();
+        changeTextBinary();
+        hideStatusPanel();
+        hideCodetracePanel();
+        listWidget.setActiveStatus("binary");
+    });
+
+    $('#title-Block').click(function () {
+        if (isPlaying) stop();
+        hideEntireActionsPanel();
+        showActionsPanel();
+        displayBlock();
+        changeTextBlock();
+        hideStatusPanel();
+        hideCodetracePanel();
+        listWidget.setActiveStatus("block");
+    });
+
+
+
+    function displayList() {
+        document.getElementById("search-input").style.display = "";
+        document.getElementById("search-go").style.display = "";
+    }
+
+    function displayBinary() {
+        document.getElementById("search-input").style.display = "";
+        document.getElementById("search-go").style.display = "";
+    }
+
+    function displayBlock() {
+        document.getElementById("search-input").style.display = "";
+        document.getElementById("search-go").style.display = "";
+    }
+
+
+    function changeTextLinear() {
+        document.getElementById('create').innerHTML = "创建";
+        document.getElementById('search').innerHTML = "查找";
+    }
+
+    function changeTextBinary() {
+        document.getElementById('create').innerHTML = "创建";
+        document.getElementById('search').innerHTML = "查找";
+    }
+
+    function changeTextBlock() {
+        document.getElementById('create').innerHTML = "";
+        document.getElementById('search').innerHTML = "查找";
+    }
+
+
+    function searchGeneric() {
+
+    }
+
+    function removeGeneric() {
+    }
+
+    function random() {
+        if (isPlaying) stop();
+        setTimeout(function () {
+            if ((mode == "exploration") && listWidget.generateRandom()) {
+                $('#progress-bar').slider("option", "max", 0);
+                closeCreate();
+                isPlaying = false;
+            }
+        }, 500);
+        hideStatusPanel();
+        hideCodetracePanel();
+    }
+
+    function randomLL() {
+        if (isPlaying) stop();
+        setTimeout(function () {
+            if ((mode == "exploration") && listWidget.generateRandomSorted()) {
+                $('#progress-bar').slider("option", "max", 0);
+                closeCreate();
+                isPlaying = false;
+            }
+        }, 500);
+        hideStatusPanel();
+        hideCodetracePanel();
+    }
+
+    function nonRandom() {
+        if (isPlaying) stop();
+        setTimeout(function () {
+            var input = $('#v-create-arr').val();
+            input = input.split(",");
+            if ((mode == "exploration") && listWidget.generateUserDefined(input)) {
+                $('#progress-bar').slider("option", "max", 0);
+                closeCreate();
+                isPlaying = false;
+            }
+        }, 500);
+        hideStatusPanel();
+        hideCodetracePanel();
+    }
+
+
+    function searchVertex() {
+        if (isPlaying) stop();
+        setTimeout(function () {
+            var input = $('#v-search').val();
+            input = parseInt(input)
+            if (listWidget.getActiveStatus() == "linear"){
+                if (listWidget.searchLinear(input)) {
+                    $('#current-action').show();
+                    $('#current-action p').html("查找 " + input);
+                    $('#progress-bar').slider("option", "max", gw.getTotalIteration() - 1);
+                    triggerRightPanels();
+                    isPlaying = true;
+                }
+            }
+
+            if (listWidget.getActiveStatus() == "binary"){
+                if (listWidget.searchBinary(input)) {
+                    $('#current-action').show();
+                    $('#current-action p').html("查找 " + input);
+                    $('#progress-bar').slider("option", "max", gw.getTotalIteration() - 1);
+                    triggerRightPanels();
+                    isPlaying = true;
+                }
+            }
+
+            if (listWidget.getActiveStatus() == "block"){
+                if (listWidget.searchBlock(input)) {
+                    $('#current-action').show();
+                    $('#current-action p').html("查找 " + input);
+                    $('#progress-bar').slider("option", "max", gw.getTotalIteration() - 1);
+                    triggerRightPanels();
+                    isPlaying = true;
+                }
+            }
+
+        }, 500);
+    }
+
+    function createModelingOpen(modelingType) {
+        $(".create").css("bottom", "60px");
+        if (modelingType != "createfixedsize")
+            $('#createfixedsize-input').fadeOut('fast');
+        if (modelingType != "createuserdefined")
+            $('#createuserdefined-input').fadeOut('fast');
+        $('#' + modelingType + '-input').fadeIn('fast');
+    }
+
+</script>
+
+</body>
+</html>

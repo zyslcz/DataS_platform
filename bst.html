@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta description="二叉搜索树的数据结构演示">
+  <meta keyword="数据结构 二叉搜索树 算法 可视化 演示">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>二叉树</title>
+  <link rel="icon" type="image/png" href="img/favicon.ico">
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/viz.css">
+  <link rel="stylesheet" href="css/stylesheet.css">
+  <link rel="stylesheet" href="css/local.css">
+  <link rel="stylesheet" href="css/visual.css">
+  <link rel="stylesheet" href="css/drawgraph.css">
+  <link rel="stylesheet" href="css/bst.css">
+
+  <script src="js/jquery-2.1.3.min.js"></script>
+  <script src="js/jquery-ui.js"></script>
+  <script src="js/d3.v3.js"></script>
+  <script src="js/viz.js"></script>
+  <script src="js/common.js"></script>
+</head>
+
+<body>
+<div id="top-bar">
+  <a id="home" href="index.html">
+    数据结构
+    <span class="colour"> 
+      演示平台
+    </span>
+  </a>&nbsp;&nbsp;&nbsp;
+  <span id="title">
+    <a id="title-BST" class="selected-viz">二叉搜索树</a>
+    <a id="title-AVL">平衡二叉搜索树</a>
+  </span>
+</div>
+
+<div id="viz"></div>
+
+<div id="current-action" class="panel"><p></p></div>
+
+<div id="actions" class="panel">
+  <p id="create">创建</p>
+  <p id="search">查找</p>
+  <p id="insert">插入</p>
+  <p id="remove">删除</p>
+  <p id="successor">后继</p>
+  <p id="predecessor">前驱</p>
+  <p id="inorder" class="execAction" onclick=inorderTraversal()>中序遍历</p>
+</div>
+<div id="actions-hide" class="panel-hide"><img src="img/arrow_white_right.png" title="show/hide actions panel"/></div>
+<div id="actions-extras">
+  <div class="create action-menu-pullout">
+    <div id="create-empty" class="execAction new-menu-option coloured-menu-option" onClick=empty()><p>空树</p></div>
+    <div id="create-random" class="execAction new-menu-option coloured-menu-option" onClick=random()><p>随机树</p></div>
+    <div id="create-skewed-left" class="execAction new-menu-option coloured-menu-option" onClick=skewed('left')><p>只有左子树</p></div>
+    <div id="create-skewed-right" class="execAction new-menu-option coloured-menu-option" onClick=skewed('right')><p>只有右子树</p></div>
+    <div id="create-err" class="err"></div>
+  </div>
+  <div class="search action-menu-pullout">
+    <div id="find-min" class="execAction new-menu-option coloured-menu-option" onClick=findMin()><p>最小值</p></div>
+    <div id="find-max" class="execAction new-menu-option coloured-menu-option" onClick=findMax()><p>最大值</p></div>
+    <div id="search-input" class="new-menu-option"><input type="text" id="v-search" title="Enter an integer" autocomplete="off" value=5 /></div>
+    <div id="search-go" class="execAction coloured-menu-option" onclick=searchVertex()><p>确认</p></div>
+    <div id="search-err" class="err"></div>
+  </div>
+  <div class="insert action-menu-pullout">
+    <div id="insert-input" class="new-menu-option"><input type="text" id="v-insert" title="Enter an integer or comma-separated array of integers" autocomplete="off" value="8,10,9"/></div>
+    <div id="insert-go" class="execAction coloured-menu-option" onclick=insertVertex()><p>确认</p></div>
+    <div id="insert-err" class="err"></div>
+  </div>
+  <div class="remove action-menu-pullout">
+    <div id="remove-input" class="new-menu-option"><input type="text" id="v-remove" title="Enter an integer or comma-separated array of integers" autocomplete="off" value="7,4,15" /></div>
+    <div id="remove-go" class="execAction coloured-menu-option" onclick=removeVertex()><p>确认</p></div>
+    <div id="remove-err" class="err"></div>
+  </div>
+  <div class="successor action-menu-pullout">
+    <div id="succ-input" class="new-menu-option"><input type="text" id="v-succ" title="Enter an integer" autocomplete="off" value=15 /></div>
+    <div id="succ-go" class="execAction coloured-menu-option" onclick=successor()><p>确认</p></div>
+    <div id="succ-err" class="err"></div>
+  </div>
+  <div class="predecessor action-menu-pullout">
+    <div id="pred-input" class="new-menu-option"><input type="text" id="v-pred" title="Enter an integer" autocomplete="off" value=15 /></div>
+    <div id="pred-go" class="execAction coloured-menu-option" onclick=predecessor()><p>确认</p></div>
+    <div id="pred-err" class="err"></div>
+  </div>
+  <div class="inorder action-menu-pullout">
+    <div id="inorder-err" class="err"></div>
+  </div>
+</div>
+
+<div id="status" class="panel"><p></p></div>
+<div id="status-hide" class="panel-hide"><img src="img/arrow_white_right.png" title="show/hide status panel"/></div>
+
+<div id="codetrace" class="panel">
+  <p id="code1" style="padding-top: 10px;"></p>
+  <p id="code2"></p>
+  <p id="code3"></p>
+  <p id="code4"></p>
+  <p id="code5"></p>
+  <p id="code6"></p>
+  <p id="code7" style="padding-bottom: 10px;"></p>
+</div>
+<div id="codetrace-hide" class="panel-hide"><img src="img/arrow_white_right.png" title="show/hide codetrace panel"/></div>
+
+<div id="left-bar"></div>
+<div id="right-bar"></div>
+
+<div id="bottom-bar">
+  <a id="trigger-about"></a>
+  <a id="trigger-team"></a>
+  <a id="trigger-terms"></a>
+</div>
+
+<div id="media-controls">
+  <div id="speed-control">慢<div id="speed-input"></div>快</div>
+  <span id="go-to-beginning" class="media-control-button" title="跳到开始" onclick=goToBeginning()><img src="img/goToBeginning.png" alt="go to beginning" /></span>
+  <span id="previous" class="media-control-button" title="后退一步" onclick=stepBackward()><img src="img/prevFrame.png" alt="previous frame" /></span>
+  <span id="pause" class="media-control-button" title="暂停" onclick=pause()><img src="img/pause.png" alt="pause" /></span>
+  <span id="play" class="media-control-button" title="开始" onclick=play()><img src="img/play.png" alt="play" /></span>
+  <span id="next" class="media-control-button" title="前进一步" onclick=stepForward()><img src="img/nextFrame.png" alt="next frame" /></span>
+  <span id="go-to-end" class="media-control-button" title="跳到结尾" onclick=goToEnd()><img src="img/goToEnd.png" alt="go to end"/></span>
+  <div id="progress-bar" class="media-control-button"></div>
+</div>
+
+<div id="dark-overlay"></div>
+<div id="about" class="overlays"></div>
+<div id="team" class="overlays"></div>
+<div id="termsofuse" class="overlays"></div>
+
+<script src="js/constant.js"></script>
+<script src="js/properties.js"></script>
+<script src="js/helperObjects.js"></script>
+<script src="js/misc.js"></script>
+<script src="js/Widget.js"></script>
+<script src="js/GraphWidget.js"></script>
+<script src="js/GraphVertexWidget.js"></script>
+<script src="js/GraphEdgeWidget.js"></script>
+<script src="js/bst.js"></script>
+
+</body>
+</html>

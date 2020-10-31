@@ -1,0 +1,145 @@
+    .draw {
+        bottom: 180px;
+    }
+    
+    #draw-err {
+        padding: 8px 0px 7px
+    }
+    
+    .random {
+        bottom: 146px;
+    }
+    
+    #random-err {
+        padding: 8px 0px 7px
+    }
+    
+    .samples {
+        bottom: 114px;
+    }
+    
+    .samples p {
+        padding: 5px 8px;
+    }
+    
+    #samplejson-input {
+        width: 200px;
+        height: 16px;
+        padding: 8px;
+    }
+    
+    #samples-err {
+        padding: 5px 0px;
+    }
+    
+    .kruskals {
+        bottom: 92px;
+    }
+    
+    #kruskals-err {
+        padding: 5px 0px;
+    }
+    
+    .prims {
+        bottom: 60px;
+    }
+    
+    #prims-input input {
+        width: 25px;
+        height: 16px;
+        padding: 8px;
+    }
+    
+    #prims-go p {
+        padding: 8px 8px 7px;
+    }
+    
+    #prims-err {
+        padding: 8px 0px 7px;
+    }
+    
+    #tutorial-1 {
+        top: 60px;
+        left: 60px;
+        width: 300px;
+    }
+    
+    #tutorial-2 {
+        bottom: 230px;
+        left: 60px;
+        width: 600px;
+    }
+    
+    #tutorial-2:before {
+        top: 100%;
+        left: 20%;
+        border-top-color: black;
+        margin-left: -10px;
+    }
+    
+    #tutorial-3 {
+        top: 450px;
+        left: 50%;
+        width: 320px;
+        margin-left: -160px;
+    }
+    
+    #tutorial-3:before {
+        bottom: 100%;
+        left: 50%;
+        border-bottom-color: black;
+        margin-left: -10px;
+    }
+    
+    #tutorial-4 {
+        bottom: 335px;
+        right: 150px;
+        width: 250px;
+    }
+    
+    #tutorial-4:before {
+        top: 100%;
+        left: 20%;
+        border-top-color: black;
+        margin-left: -10px;
+    }
+    
+    #tutorial-5 {
+        bottom: 275px;
+        right: 150px;
+        width: 250px;
+    }
+    
+    #tutorial-5:before {
+        top: 100%;
+        left: 20%;
+        border-top-color: black;
+        margin-left: -10px;
+    }
+    
+    #tutorial-6 {
+        bottom: 70px;
+        left: 50%;
+        width: 280px;
+        margin-left: -120px;
+    }
+    
+    #tutorial-6:before {
+        top: 100%;
+        left: 50%;
+        border-top-color: black;
+        margin-left: -10px;
+    }
+    
+    #tutorial-7 {
+        top: 70px;
+        right: 60px;
+        width: 150px;
+    }
+    
+    #tutorial-7:before {
+        bottom: 100%;
+        left: 50%;
+        border-bottom-color: black;
+        margin-left: -10px;
+    }

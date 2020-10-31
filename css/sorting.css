@@ -1,0 +1,57 @@
+.create { bottom: 92px; }
+  #create-random p { padding: 7px 8px 8px; }
+  #create-sorted p { padding: 7px 8px 8px; }
+    #create-sorted-increasing { float:left; padding: none; }
+    #create-sorted-decreasing { float:left; padding: none;}
+  #create-nearly-sorted p { padding: 7px 8px 8px; }
+    #create-nearly-sorted-increasing { float:left; padding: none;}
+    #create-nearly-sorted-decreasing { float:left; padding: none;}
+  #create-userdefined-input input { 
+            width: 300px;
+            padding: 8px 8px 8px; }
+  #create-userdefined-go p { padding: 7px 8px 8px; }
+  #create-err { padding: 8px 0px 7px; }
+
+.sort { bottom: 60px; }
+  #sort-bubble-enhanced p { padding: 7px 8px 8px; }
+  #sort-bubble-merge-inversion p { padding: 7px 8px 8px; }
+  #sort-go p { padding: 7px 8px 8px; }
+  #sort-err { padding: 8px 0px 7px; } /* currently unused*/
+  
+  text {
+    fill: black;
+    font: 20px sans-serif;
+    text-anchor: middle; 
+  }
+
+#viz-radix-sort-canvas {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -250px;
+  margin-left: -500px;
+  height: 500px;
+  width: 1000px;
+}
+
+div .radix-sort-element {
+  position: absolute;
+  border: 1px solid black;
+  width: 55px;
+  font: 20px sans-serif;
+  color: black;
+}
+
+#radix-sort-bucket-labels-collection {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+}
+
+.radix-sort-bucket-label {
+  position: absolute;
+  border-top: 1px solid black;
+  width: 57px;
+  font: 20px sans-serif;
+  color: black;
+}

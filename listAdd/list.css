@@ -1,0 +1,264 @@
+body {
+  height: 100%;
+}
+#left-bar {
+  position: absolute;
+  float: left;
+  width: 40px;
+  top: 0;
+  bottom: 0;
+  background: #000000;
+  z-index: -1;
+}
+#right-bar {
+  position: absolute;
+  float: right;
+  width: 40px;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background: #000000;
+  z-index: -1;
+}
+#container {
+  margin: 10px auto;
+  /* margin-top: 10px; */
+  width: 95vw;
+  height: 600px;
+  position: relative;
+  /*border: 1px solid #bbbbbb;*/
+}
+
+#panel {
+  /*margin: 0 auto;*/
+  margin-top: 10px;
+  width: 1024px;
+  height: 600px;
+  /*border: 1px solid #bbbbbb;*/
+}
+
+#container > div {
+  float: left;
+  position: absolute;
+}
+
+#pannel > div {
+  float: left;
+  position: absolute;
+}
+
+.arrow {
+  opacity: 0;
+  width: 100px;
+  height: 2px;
+  background-color: black;
+  position: absolute;
+  left: 10%;
+  top: 10%;
+
+  -webkit-transition: all 300ms ease-in-out;
+  -moz-transition: all 300ms ease-in-out;
+  -o-transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
+
+  z-index: 98;
+}
+
+.arrow:after {
+  content: "";
+  width: 0;
+  height: 0;
+  display: block;
+  position: relative;
+  border-width: 5px;
+  border-style: solid;
+  left: 100%;
+  top: calc((-5px * 2 + 2px) / 2);
+  border-color: transparent transparent transparent black;
+  z-index: 98;
+}
+
+button,
+input {
+  position: absolute;
+  width: 150px;
+  height: 40px;
+  font-size: 16px;
+}
+
+.circle {
+  opacity: 0;
+
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  line-height: 25px;
+  border: 3px solid #000000;
+  background: #ffffff;
+  text-align: center;
+  font-size: 18px;
+  z-index: 100;
+
+  -webkit-transition: all 300ms ease-in-out;
+  -moz-transition: all 300ms ease-in-out;
+  -o-transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
+}
+
+#temp {
+  width: 50px;
+  height: 50px;
+
+  left: 100px;
+  top: 100px;
+
+  font-size: 20px;
+  line-height: 50px;
+  text-align: center;
+
+  border: 3px solid #000000;
+}
+
+.line {
+  /* width: 77px; */
+  height: 3px;
+  background: #000000;
+  transform-origin: 0%;
+
+  z-index: 98;
+
+  -webkit-transition: all 300ms ease-in-out;
+  -moz-transition: all 300ms ease-in-out;
+  -o-transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
+}
+
+#info2 {
+  right: 0;
+  bottom: 145px;
+  width: 40px;
+  height: 50px;
+  background: rgb(214, 87, 117);
+}
+
+#info {
+  bottom: 145px;
+  right: 45px;
+  height: 50px;
+  width: 300px;
+  color: white;
+  background: rgb(214, 87, 117);
+}
+
+#info > p {
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+#code2 {
+  bottom: 40px;
+  right: 0;
+  width: 40px;
+  height: 99px;
+  background: rgb(217, 81, 60);
+}
+
+#code {
+  bottom: 40px;
+  right: 45px;
+  width: 400px;
+  background: rgb(217, 81, 60);
+  font-family: "Courier New", Courier, monospace;
+}
+
+#code > p {
+  padding-left: 10px;
+  line-height: 25px;
+  font-size: 13px;
+}
+
+#start {
+  bottom: 200px;
+  height: 40px;
+  width: 70px;
+  left: 45px;
+  background: rgb(214, 87, 117);
+  text-align: center;
+  cursor: pointer;
+  z-index: 99;
+}
+
+#start:hover {
+  background: rgb(209, 67, 100);
+}
+
+#start-p {
+  line-height: 40px;
+  color: white;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#start2 {
+  bottom: 200px;
+  height: 40px;
+  width: 40px;
+  background: rgb(214, 87, 117);
+}
+
+#start3 {
+  bottom: 155px;
+  height: 40px;
+  width: 40px;
+  background: rgb(214, 87, 117);
+}
+
+#result {
+  left: 200px;
+  bottom: 200px;
+}
+
+.circle-r {
+  float: left;
+  margin-left: 10px;
+  margin-top: 5px;
+}
+
+.speed {
+  bottom: 155px;
+  height: 40px;
+  width: 70px;
+  left: 45px;
+  background: rgb(214, 87, 117);
+  text-align: center;
+  cursor: pointer;
+  z-index: 99;
+}
+
+.speed:hover {
+  background: rgb(209, 67, 100);
+}
+
+.speed > p {
+  line-height: 40px;
+  color: white;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#speed-down {
+  width: 50px;
+}
+
+#speed-default {
+  left: 96px;
+}
+
+#speed-up {
+  width: 50px;
+  left: 167px;
+}
