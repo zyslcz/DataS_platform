@@ -1,0 +1,14 @@
+{
+  "name": "lcz",
+  "version": "1.0.0",
+  "description": "lcz",
+  "main": "index.js",
+  "author": "lcz",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^5.4.0"
+  },
+  "dependencies": {
+    "react-dom": "^17.0.1"
+  }
+}
